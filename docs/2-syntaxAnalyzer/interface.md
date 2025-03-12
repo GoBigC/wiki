@@ -2,4 +2,4 @@
 - Input: BigC source code 
 - Output: Abstract Syntax Tree 
 
-Source code repo: https://github.com/GoBigC/syntaxAnalyzer 
+Source code repo: [https://github.com/GoBigC/syntaxAnalyzer](https://github.com/GoBigC/syntaxAnalyzer) 
