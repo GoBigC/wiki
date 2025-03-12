@@ -32,7 +32,8 @@ markdown_extensions:
       permalink: true
 
 nav:
-  - Home: 0-housekeeping/index.md
+  - Home: 
+    - 0-housekeeping/index.md
     - Design Choices: 0-housekeeping/designChoices.md
     - Tech Stack: 0-housekeeping/techStack.md
     - Assets: 0-housekeeping/assets/index.md
