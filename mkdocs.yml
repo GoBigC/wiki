@@ -32,11 +32,23 @@ markdown_extensions:
       permalink: true
 
 nav:
-  - Home: index.md
-  - Start here: 0-housekeeping/index.md
-  - Grammar & Source code samples: 1-grammar/index.md
-  - Semantic Analysis: 2-syntaxAnalyzer/index.md
-  - Syntax Analysis: 3-semanticAnalyzer/index.md
-  - Code Generation: 4-codeGenerator/index.md
-  - FAQ: faq.md
+  - Home: 0-housekeeping/index.md
+    - Design Choices: 0-housekeeping/designChoices.md
+    - Tech Stack: 0-housekeeping/techStack.md
+    - Assets: 0-housekeeping/assets/index.md
+  - Grammar:
+    - 1-grammar/index.md
+    - Bible: 1-grammar/bible.md
+    - Proof: 1-grammar/proof.md
+    - Sample: 1-grammar/sample.md
+  - Syntax Analyzer:
+    - 2-syntaxAnalyzer/index.md
+    - Interface: 2-syntaxAnalyzer/interface.md
+  - Semantic Analyzer:
+    - 3-semanticAnalyzer/index.md
+    - Interface: 3-semanticAnalyzer/interface.md
+  - Code Generator:
+    - 4-codeGenerator/index.md
+    - Interface: 4-codeGenerator/interface.md
   - Contributing: contributing.md
+  - FAQ: faq.md
