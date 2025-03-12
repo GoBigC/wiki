@@ -11,3 +11,7 @@ N/A
 3. Why the broccoli logo? 
 
 We were originally called "TheBroccoliFarmers", but had to change the organization's name due to practicality. 
+
+4. Why BigC? 
+
+Because we think it's funny. 

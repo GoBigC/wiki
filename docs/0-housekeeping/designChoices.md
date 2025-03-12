@@ -7,6 +7,12 @@ As hardwares get more and more powerful, the previously slow execution time of a
 ![Programming language timeline (from Dr. Linh Huynh's lecture notes)](assets/timeline.png)
 
 We think that we have significantly more chance to write interpreted languages in future work experiences, and we wanted to take this chance to know what it takes to write a compiled language. 
+
+# Static Typing & Static Scoping 
+
+For safety and predictability, BigC requires explicit typing that will be checked during compilation. 
+
+Dynamic scoping is generally not a good idea, though it makes things simpler for us language developers. Dynamically scoped languages like JavaScript or Bash are often used to write short scripts, and that is not the intended direction for BigC. 
  
 # Targets the RISC-V ISA 
 
