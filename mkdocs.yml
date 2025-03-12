@@ -1,6 +1,6 @@
 site_name: BigC
 site_description: BigC Documentation
-site_url: https://thebroccolifarmers.github.io/wiki/
+site_url: https://gobigc.github.io/wiki/
 
 theme:
   name: material
