@@ -827,6 +827,9 @@
 <p>As hardwares get more and more powerful, the previously slow execution time of a code snippet is hardly noticeable anymore. Languages that spawned recently are mostly compiled for this reason:</p>
 <p><img alt="Programming language timeline (from Dr. Linh Huynh's lecture notes)" src="../assets/timeline.png" /></p>
 <p>We think that we have significantly more chance to write interpreted languages in future work experiences, and we wanted to take this chance to know what it takes to write a compiled language. </p>
+<h1 id="static-typing-static-scoping">Static Typing &amp; Static Scoping<a class="headerlink" href="#static-typing-static-scoping" title="Permanent link">&para;</a></h1>
+<p>For safety and predictability, BigC requires explicit typing that will be checked during compilation. </p>
+<p>Dynamic scoping is generally not a good idea, though it makes things simpler for us language developers. Dynamically scoped languages like JavaScript or Bash are often used to write short scripts, and that is not the intended direction for BigC. </p>
 <h1 id="targets-the-risc-v-isa">Targets the RISC-V ISA<a class="headerlink" href="#targets-the-risc-v-isa" title="Permanent link">&para;</a></h1>
 <p>Compiling from a high-level language to another high-level language (like C or Java, or god forbid, Python) seems like cheating :) as if it is pseudo-compiling :) </p>
 <p>So to put ourselves to the challenge, we decided to compile our language to an assembly language.</p>
