@@ -828,7 +828,7 @@
 <img alt="Answer" src="../assets/answer.png" /></p>
 <p>Go has its own version of yacc called <a href="https://pkg.go.dev/golang.org/x/tools/cmd/goyacc">goyacc</a>. It is very close to yacc, but native to Go. And by translation, the previous warnings about using lex/yacc still kinda applies. </p>
 <p>ANTLR is more modern and supports Go. ANTLR also supports the Visitor pattern out of the box. For this and the fact that people warns so much against lex/yacc, we made the decision to use ANTLR as BigC's parser generator.</p>
-<p>Since ANTLR is a <a href="https://blog.reverberate.org/2013/07/ll-and-lr-parsing-demystified.html">LL-parser</a>, we should make our grammar not left-recursive.  </p>
+<p>Since ANTLR is a <a href="https://blog.reverberate.org/2013/07/ll-and-lr-parsing-demystified.html">LL-parser</a>, we should make our grammar not left-recursive. See more in the <a href="https://www.antlr2.org/doc/lexer.html">ANTLR lexer document</a></p>
 <h1 id="why-go">Why Go?<a class="headerlink" href="#why-go" title="Permanent link">&para;</a></h1>
 <p>Because we want to.</p>
 <h1 id="why-risc-v">Why RISC-V?<a class="headerlink" href="#why-risc-v" title="Permanent link">&para;</a></h1>

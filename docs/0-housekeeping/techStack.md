@@ -9,7 +9,7 @@ Go has its own version of yacc called [goyacc](https://pkg.go.dev/golang.org/x/t
 
 ANTLR is more modern and supports Go. ANTLR also supports the Visitor pattern out of the box. For this and the fact that people warns so much against lex/yacc, we made the decision to use ANTLR as BigC's parser generator.
 
-Since ANTLR is a [LL-parser](https://blog.reverberate.org/2013/07/ll-and-lr-parsing-demystified.html), we should make our grammar not left-recursive.  
+Since ANTLR is a [LL-parser](https://blog.reverberate.org/2013/07/ll-and-lr-parsing-demystified.html), we should make our grammar not left-recursive. See more in the [ANTLR lexer document](https://www.antlr2.org/doc/lexer.html)
 
 # Why Go? 
 
