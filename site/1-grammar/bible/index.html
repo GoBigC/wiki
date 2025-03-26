@@ -874,56 +874,45 @@
 <p>This wiki page consolidates all grammar rules into one place for easy lookup, but in reality we split the grammar into multiple files for better focus and maintenance. <a href="https://github.com/GoBigC/grammar/tree/main">Go to code repository</a>.</p>
 <h2 id="parser-rules">Parser Rules<a class="headerlink" href="#parser-rules" title="Permanent link">&para;</a></h2>
 <p>program
-    : declaration* EOF 
-    ; </p>
+    : declaration* EOF
+    ;</p>
 <p>declaration
-    : constDeclaration
-    | type Identifier declarationRemainder 
-    ; </p>
+    : type Identifier declarationRemainder
+    ;</p>
 <p>type
     : 'int'
     | 'float'
     | 'bool'
     | 'char'
     | 'void' 
-    ; </p>
-<p>constDeclaration
-    : 'const' type Identifier '=' expression ';'
     ;</p>
 <p>declarationRemainder 
     : '(' parameterList? ')' block 
     | Identifier variableInitializer? ';'
-    ; </p>
-<p>variableInitializer
-    : '=' expression ';'
     ;</p>
 <p>parameterList
     : parameter (',' parameter)*
-    ; </p>
+    ;</p>
 <p>parameter
     : type Identifier
     ;</p>
 <p>block 
     : '{' blockItem* '}'
-    ; </p>
+    ;</p>
 <p>blockItem
     : declaration
     | statement
-    ; </p>
+    ;</p>
 <p>statement
     : ifStatement
     | nonIfStatement
-    ; </p>
-<p>ifStatement
-    : 'if' '(' expression ')' block elseBlock?
     ;</p>
-<p>elseBlock
-    : 'else' elseBlockRemainder 
-    ; </p>
-<p>elseBlockRemainder 
-    : block 
-    | ifStatement 
-    ; </p>
+<p>ifStatement
+    : 'if' '(' expression ')' block elseClause?
+    ;</p>
+<p>elseClause
+    : 'else' (block | ifStatement)
+    ;</p>
 <p>nonIfStatement 
     : expression ';'
     | whileStatement
@@ -931,114 +920,121 @@
     ;</p>
 <p>whileStatement
     : 'while' '(' expression ')' block 
-    ; </p>
+    ;</p>
 <p>returnStatement 
     : 'return' expression ';'
-    ; </p>
+    ;</p>
 <p>expression 
     : assignmentExpression 
-    ; </p>
+    ;</p>
 <p>assignmentExpression
-    : logicalOrExpression ('=' assignmentExpression)?
-    ; </p>
+    : logicalOrExpression assignmentRest?
+    ;</p>
+<p>assignmentRest
+    : '=' assignmentExpression
+    ;</p>
+<p>variableInitializer
+    : '=' expression ';'
+    ;</p>
 <p>logicalOrExpression
-    : logicalAndExpression ('||' logicalAndExpression)*
-    ; </p>
+    : logicalAndExpression logicalOrRest*
+    ;</p>
+<p>logicalOrRest
+    : '||' logicalAndExpression
+    ;</p>
 <p>logicalAndExpression
-    : equalityExpression ('&amp;&amp;' equalityExpression)*
-    ; </p>
+    : equalityExpression logicalAndRest*
+    ;</p>
+<p>logicalAndRest
+    : '&amp;&amp;' equalityExpression
+    ;</p>
 <p>equalityExpression
-    : comparisonExpression (equalityOperator comparisonExpression)*
-    ; </p>
+    : comparisonExpression equalityRest*
+    ;</p>
+<p>equalityRest
+    : equalityOperator comparisonExpression
+    ;</p>
 <p>equalityOperator 
     : '=='
     | '!='
-    ; </p>
+    ;</p>
 <p>comparisonExpression 
-    : additionExpression (comparisonOperator additionExpression)* 
-    ; </p>
+    : additionExpression comparisonRest*
+    ;</p>
+<p>comparisonRest
+    : comparisonOperator additionExpression
+    ;</p>
 <p>comparisonOperator
     : '&gt;'
     | '&lt;'
     | '&gt;='
     | '&lt;='
-    ; </p>
+    ;</p>
 <p>additionExpression
-    : multiplicationExpression (addSubtractOperator multiplicationExpression)*
-    ; </p>
+    : multiplicationExpression additionExpressionRest*
+    ;</p>
+<p>additionExpressionRest
+    : addSubtractOperator multiplicationExpression
+    ;</p>
 <p>addSubtractOperator 
     : '+'
     | '-'
-    ; </p>
+    ;</p>
 <p>multiplicationExpression
-    : unaryExpression (multDivModOperator unaryExpression)*
-    ; </p>
+    : unaryExpression multiplicationExpressionRest*
+    ;</p>
+<p>multiplicationExpressionRest
+    : multDivModOperator unaryExpression
+    ;</p>
 <p>multDivModOperator
     : '*'
     | '/'
     | '%'
-    ; </p>
+    ;</p>
 <p>unaryExpression 
     : postfixExpression 
     | unaryOperator unaryExpression 
-    ; </p>
+    ;</p>
 <p>unaryOperator
     : '++' // prefix
     | '--' // prefix
     ;</p>
 <p>postfixExpression 
-    : primaryExpression (arrayAccess | functionCallArgs | increaseDecrease)*
-    ; </p>
+    : primaryExpression (arrayAccess | functionCallArgs | increaseDecrease)?
+    ;</p>
 <p>arrayAccess 
     : '[' expression ']'
-    ; </p>
+    ;</p>
 <p>functionCallArgs
     : '(' argList? ')'
-    ; </p>
+    ;</p>
 <p>increaseDecrease
     : '++'  // postfix
     | '--'  // postfix 
-    ; </p>
+    ;</p>
 <p>argList 
     : assignmentExpression (',' assignmentExpression)*
-    ; </p>
+    ;</p>
 <p>primaryExpression 
     : Identifier 
     | constant 
     | '(' expression ')'
-    ; </p>
+    ;</p>
 <p>constant
     : IntegerConstant 
     | FloatingConstant 
     | BooleanConstant 
     | CharConstant 
-    ; </p>
+    ;</p>
 <h2 id="lexer-rules">Lexer Rules<a class="headerlink" href="#lexer-rules" title="Permanent link">&para;</a></h2>
-<p>Identifier
-    : [a-zA-Z_][a-zA-Z0-9]*
-    ; </p>
-<p>IntegerConstant
-    : [0-9]+
-    ;</p>
-<p>FloatingConstant
-    : [0-9]+ '.' [0-9]+
-    ; </p>
-<p>CharConstant
-    : '\'' ~[\r\n]'\'' // anything but CR, LF
-    ;</p>
-<p>BooleanConstant 
-    : 'true'
-    | 'false'
-    ; </p>
-<p>WS
-    : [ \t\r\n]+ -&gt; skip
-    ; </p>
-<p>COMMENT
-    : '//' ~[\r\n]* -&gt; skip
-    ; </p>
-<p>DOCSTRING
-    : '/<em>' .</em>? '*/' -&gt; skip 
-    ; </p>
+<p>Identifier: [a-zA-Z_][a-zA-Z0-9_]*;</p>
+<p>IntegerConstant: [0-9]+;
+FloatingConstant: [0-9]+ '.' [0-9]+;
+BooleanConstant: 'true' | 'false';
+CharConstant: '\'' . '\'';</p>
+<p>WS: [ \t\r\n]+ -&gt; skip;
+COMMENT: '//' ~[\r\n]<em> -&gt; skip;
+MULTILINE_COMMENT: '/</em>' .<em>? '</em>/' -&gt; skip;</p>
 
 
 
