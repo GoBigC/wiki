@@ -477,6 +477,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Bible
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -486,6 +497,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parser-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parser Rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lexer-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lexer Rules
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -823,6 +871,174 @@
 
 
 <h1 id="bigc-full-grammar">BigC Full Grammar<a class="headerlink" href="#bigc-full-grammar" title="Permanent link">&para;</a></h1>
+<p>This wiki page consolidates all grammar rules into one place for easy lookup, but in reality we split the grammar into multiple files for better focus and maintenance. <a href="https://github.com/GoBigC/grammar/tree/main">Go to code repository</a>.</p>
+<h2 id="parser-rules">Parser Rules<a class="headerlink" href="#parser-rules" title="Permanent link">&para;</a></h2>
+<p>program
+    : declaration* EOF 
+    ; </p>
+<p>declaration
+    : constDeclaration
+    | type Identifier declarationRemainder 
+    ; </p>
+<p>type
+    : 'int'
+    | 'float'
+    | 'bool'
+    | 'char'
+    | 'void' 
+    ; </p>
+<p>constDeclaration
+    : 'const' type Identifier '=' expression ';'
+    ;</p>
+<p>declarationRemainder 
+    : '(' parameterList? ')' block 
+    | Identifier variableInitializer? ';'
+    ; </p>
+<p>variableInitializer
+    : '=' expression ';'
+    ;</p>
+<p>parameterList
+    : parameter (',' parameter)*
+    ; </p>
+<p>parameter
+    : type Identifier
+    ;</p>
+<p>block 
+    : '{' blockItem* '}'
+    ; </p>
+<p>blockItem
+    : declaration
+    | statement
+    ; </p>
+<p>statement
+    : ifStatement
+    | nonIfStatement
+    ; </p>
+<p>ifStatement
+    : 'if' '(' expression ')' block elseBlock?
+    ;</p>
+<p>elseBlock
+    : 'else' elseBlockRemainder 
+    ; </p>
+<p>elseBlockRemainder 
+    : block 
+    | ifStatement 
+    ; </p>
+<p>nonIfStatement 
+    : expression ';'
+    | whileStatement
+    | returnStatement
+    ;</p>
+<p>whileStatement
+    : 'while' '(' expression ')' block 
+    ; </p>
+<p>returnStatement 
+    : 'return' expression ';'
+    ; </p>
+<p>expression 
+    : assignmentExpression 
+    ; </p>
+<p>assignmentExpression
+    : logicalOrExpression ('=' assignmentExpression)?
+    ; </p>
+<p>logicalOrExpression
+    : logicalAndExpression ('||' logicalAndExpression)*
+    ; </p>
+<p>logicalAndExpression
+    : equalityExpression ('&amp;&amp;' equalityExpression)*
+    ; </p>
+<p>equalityExpression
+    : comparisonExpression (equalityOperator comparisonExpression)*
+    ; </p>
+<p>equalityOperator 
+    : '=='
+    | '!='
+    ; </p>
+<p>comparisonExpression 
+    : additionExpression (comparisonOperator additionExpression)* 
+    ; </p>
+<p>comparisonOperator
+    : '&gt;'
+    | '&lt;'
+    | '&gt;='
+    | '&lt;='
+    ; </p>
+<p>additionExpression
+    : multiplicationExpression (addSubtractOperator multiplicationExpression)*
+    ; </p>
+<p>addSubtractOperator 
+    : '+'
+    | '-'
+    ; </p>
+<p>multiplicationExpression
+    : unaryExpression (multDivModOperator unaryExpression)*
+    ; </p>
+<p>multDivModOperator
+    : '*'
+    | '/'
+    | '%'
+    ; </p>
+<p>unaryExpression 
+    : postfixExpression 
+    | unaryOperator unaryExpression 
+    ; </p>
+<p>unaryOperator
+    : '++' // prefix
+    | '--' // prefix
+    ;</p>
+<p>postfixExpression 
+    : primaryExpression (arrayAccess | functionCallArgs | increaseDecrease)*
+    ; </p>
+<p>arrayAccess 
+    : '[' expression ']'
+    ; </p>
+<p>functionCallArgs
+    : '(' argList? ')'
+    ; </p>
+<p>increaseDecrease
+    : '++'  // postfix
+    | '--'  // postfix 
+    ; </p>
+<p>argList 
+    : assignmentExpression (',' assignmentExpression)*
+    ; </p>
+<p>primaryExpression 
+    : Identifier 
+    | constant 
+    | '(' expression ')'
+    ; </p>
+<p>constant
+    : IntegerConstant 
+    | FloatingConstant 
+    | BooleanConstant 
+    | CharConstant 
+    ; </p>
+<h2 id="lexer-rules">Lexer Rules<a class="headerlink" href="#lexer-rules" title="Permanent link">&para;</a></h2>
+<p>Identifier
+    : [a-zA-Z_][a-zA-Z0-9]*
+    ; </p>
+<p>IntegerConstant
+    : [0-9]+
+    ;</p>
+<p>FloatingConstant
+    : [0-9]+ '.' [0-9]+
+    ; </p>
+<p>CharConstant
+    : '\'' ~[\r\n]'\'' // anything but CR, LF
+    ;</p>
+<p>BooleanConstant 
+    : 'true'
+    | 'false'
+    ; </p>
+<p>WS
+    : [ \t\r\n]+ -&gt; skip
+    ; </p>
+<p>COMMENT
+    : '//' ~[\r\n]* -&gt; skip
+    ; </p>
+<p>DOCSTRING
+    : '/<em>' .</em>? '*/' -&gt; skip 
+    ; </p>
 
 
 

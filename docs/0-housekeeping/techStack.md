@@ -13,7 +13,9 @@ Since ANTLR is a [LL-parser](https://blog.reverberate.org/2013/07/ll-and-lr-pars
 
 # Why Go? 
 
-Because we want to.
+Because we want to. 
+
+Actually, because recently Microsoft [port their entire Typescript engine into Go](https://github.com/microsoft/typescript-go/discussions/411), which is such a big egoless move, and we thought Go must be really good for people at Microsoft to do this. We too would like to know why Go is rising so fast. 
 
 # Why RISC-V? 
 
