@@ -43,6 +43,8 @@ nav:
       - Sample: 1-grammar/sample.md
     - Syntax Analyzer:
       - Interface: 2-syntaxAnalyzer/interface.md
+      - Sample AST: 2-syntaxAnalyzer/sample-ast-tree.md
+      - Notes: 2-syntaxAnalyzer/syntaxAnalyzerWritingNotes.md
     - Semantic Analyzer:
       - Interface: 3-semanticAnalyzer/interface.md
     - Code Generator:
