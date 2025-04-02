@@ -871,13 +871,16 @@
 
 
 <h1 id="bigc-full-grammar">BigC Full Grammar<a class="headerlink" href="#bigc-full-grammar" title="Permanent link">&para;</a></h1>
-<p>This wiki page consolidates all grammar rules into one place for easy lookup, but in reality we split the grammar into multiple files for better focus and maintenance. <a href="https://github.com/GoBigC/grammar/tree/main">Go to code repository</a>.</p>
+<p>You can also read this at the <a href="https://github.com/GoBigC/grammar/blob/main/BigC.g4">grammar repository</a>.</p>
 <h2 id="parser-rules">Parser Rules<a class="headerlink" href="#parser-rules" title="Permanent link">&para;</a></h2>
 <p>program
     : declaration* EOF
     ;</p>
 <p>declaration
-    : type Identifier declarationRemainder
+    : type Identifier arrayNotation? declarationRemainder
+    ;</p>
+<p>arrayNotation <br />
+    : '[' expression ']'
     ;</p>
 <p>type
     : 'int'
@@ -888,13 +891,13 @@
     ;</p>
 <p>declarationRemainder 
     : '(' parameterList? ')' block 
-    | Identifier variableInitializer? ';'
+    | variableInitializer? ';'
     ;</p>
 <p>parameterList
     : parameter (',' parameter)*
     ;</p>
 <p>parameter
-    : type Identifier
+    : type Identifier arrayNotation?
     ;</p>
 <p>block 
     : '{' blockItem* '}'
@@ -924,6 +927,17 @@
 <p>returnStatement 
     : 'return' expression ';'
     ;</p>
+<p>// Expression precedence (from highest to lowest):
+// 1. Primary expressions (constants, variables, parenthesized)
+// 2. Postfix operations (arr[i], fn(), x++, x--) -- only support the first 2
+// 3. Unary operations (!x, ++x, --x) -- only support the first
+// 4. Multiplicative (*, /) 
+// 5. Additive (+, -)
+// 6. Comparison (&lt;, &lt;=, &gt;=, &gt;)
+// 7. Equality (==, !=)
+// 8. Logical AND (&amp;&amp;)
+// 9. Logical OR (||)
+// 10. Assignment (=)</p>
 <p>expression 
     : assignmentExpression 
     ;</p>
@@ -934,7 +948,7 @@
     : '=' assignmentExpression
     ;</p>
 <p>variableInitializer
-    : '=' expression ';'
+    : '=' expression
     ;</p>
 <p>logicalOrExpression
     : logicalAndExpression logicalOrRest*
@@ -989,28 +1003,23 @@
 <p>multDivModOperator
     : '*'
     | '/'
-    | '%'
     ;</p>
 <p>unaryExpression 
     : postfixExpression 
     | unaryOperator unaryExpression 
     ;</p>
 <p>unaryOperator
-    : '++' // prefix
-    | '--' // prefix
+    : '!'
+    | '-'
     ;</p>
 <p>postfixExpression 
-    : primaryExpression (arrayAccess | functionCallArgs | increaseDecrease)?
+    : primaryExpression (arrayAccess | functionCallArgs)?
     ;</p>
 <p>arrayAccess 
     : '[' expression ']'
     ;</p>
 <p>functionCallArgs
     : '(' argList? ')'
-    ;</p>
-<p>increaseDecrease
-    : '++'  // postfix
-    | '--'  // postfix 
     ;</p>
 <p>argList 
     : assignmentExpression (',' assignmentExpression)*
