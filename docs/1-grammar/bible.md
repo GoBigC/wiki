@@ -1,6 +1,6 @@
 # BigC Full Grammar
 
-This wiki page consolidates all grammar rules into one place for easy lookup, but in reality we split the grammar into multiple files for better focus and maintenance. [Go to code repository](https://github.com/GoBigC/grammar/tree/main).
+You can also read this at the [grammar repository](https://github.com/GoBigC/grammar/blob/main/BigC.g4).
 
 ## Parser Rules 
 program
@@ -8,7 +8,11 @@ program
     ;
 
 declaration
-    : type Identifier declarationRemainder
+    : type Identifier arrayNotation? declarationRemainder
+    ;
+
+arrayNotation   
+    : '[' expression ']'
     ;
 
 type
@@ -21,7 +25,7 @@ type
 
 declarationRemainder 
     : '(' parameterList? ')' block 
-    | Identifier variableInitializer? ';'
+    | variableInitializer? ';'
     ;
 
 parameterList
@@ -29,7 +33,7 @@ parameterList
     ;
 
 parameter
-    : type Identifier
+    : type Identifier arrayNotation?
     ;
 
 block 
@@ -68,6 +72,18 @@ returnStatement
     : 'return' expression ';'
     ;
 
+// Expression precedence (from highest to lowest):
+// 1. Primary expressions (constants, variables, parenthesized)
+// 2. Postfix operations (arr[i], fn(), x++, x--) -- only support the first 2
+// 3. Unary operations (!x, ++x, --x) -- only support the first
+// 4. Multiplicative (*, /) 
+// 5. Additive (+, -)
+// 6. Comparison (<, <=, >=, >)
+// 7. Equality (==, !=)
+// 8. Logical AND (&&)
+// 9. Logical OR (||)
+// 10. Assignment (=)
+
 expression 
     : assignmentExpression 
     ;
@@ -81,7 +97,7 @@ assignmentRest
     ;
 
 variableInitializer
-    : '=' expression ';'
+    : '=' expression
     ;
 
 logicalOrExpression
@@ -152,7 +168,6 @@ multiplicationExpressionRest
 multDivModOperator
     : '*'
     | '/'
-    | '%'
     ;
 
 unaryExpression 
@@ -161,12 +176,12 @@ unaryExpression
     ;
 
 unaryOperator
-    : '++' // prefix
-    | '--' // prefix
+    : '!'
+    | '-'
     ;
 
 postfixExpression 
-    : primaryExpression (arrayAccess | functionCallArgs | increaseDecrease)?
+    : primaryExpression (arrayAccess | functionCallArgs)?
     ;
 
 arrayAccess 
@@ -175,11 +190,6 @@ arrayAccess
 
 functionCallArgs
     : '(' argList? ')'
-    ;
-
-increaseDecrease
-    : '++'  // postfix
-    | '--'  // postfix 
     ;
 
 argList 
