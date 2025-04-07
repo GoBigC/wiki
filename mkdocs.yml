@@ -3,6 +3,8 @@ site_description: BigC Documentation
 site_url: https://gobigc.github.io/wiki/
 
 theme:
+  logo: assets/apple-touch-icon.png
+  favicon: assets/favicon.ico
   name: material
   features:
     - navigation.tabs
@@ -12,14 +14,14 @@ theme:
     - search.highlight
   palette:
     - scheme: default
-      primary: indigo
-      accent: indigo
+      primary: '#02760b'
+      accent: '#02760b'
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
     - scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: '#02760b'
+      accent: '#02760b'
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
