@@ -72,28 +72,17 @@ returnStatement
     : 'return' expression ';'
     ;
 
-// Expression precedence (from highest to lowest):
-
-// 1. Primary expressions (constants, variables, parenthesized)
-
-// 2. Postfix operations (arr[i], fn(), x++, x--) -- only support the first 2
-
-// 3. Unary operations (!x, ++x, --x) -- only support the first
-
-// 4. Multiplicative (*, /) 
-
-// 5. Additive (+, -)
-
-// 6. Comparison (<, <=, >=, >)
-
-// 7. Equality (==, !=)
-
-// 8. Logical AND (&&)
-
-// 9. Logical OR (||)
-
-// 10. Assignment (=)
-
+// Expression precedence (from highest to lowest):  
+// 1. Primary expressions (constants, variables, parenthesized)     
+// 2. Postfix operations (arr[i], fn(), x++, x--) -- only support the first 2   
+// 3. Unary operations (-x, !x, ++x, --x) -- only support the first two     
+// 4. Multiplicative (*, /)     
+// 5. Additive (+, -)   
+// 6. Comparison (<, <=, >=, >)     
+// 7. Equality (==, !=)     
+// 8. Logical AND (&&)  
+// 9. Logical OR (||)   
+// 10. Assignment (=)   
 
 expression 
     : assignmentExpression 
@@ -221,18 +210,14 @@ constant
     ;
 
 ## Lexer Rules 
-BooleanConstant: 'true' | 'false';
+BooleanConstant: 'true' | 'false';  
+CharConstant: '\'' . '\'';  
 
-CharConstant: '\'' . '\'';
+Identifier: [a-zA-Z_][a-zA-Z0-9_]*; 
 
-Identifier: [a-zA-Z_][a-zA-Z0-9_]*;
+IntegerConstant: [0-9]+;    
+FloatingConstant: [0-9]+ '.' [0-9]+;    
 
-IntegerConstant: [0-9]+;
-
-FloatingConstant: [0-9]+ '.' [0-9]+;
-
-WS: [ \t\r\n]+ -> skip;
-
-COMMENT: '//' ~[\r\n]* -> skip;
-
-MULTILINE_COMMENT: '/*' .*? '*/' -> skip;
+WS: [ \t\r\n]+ -> skip;     
+COMMENT: '//' ~[\r\n]\* -> skip;     
+MULTILINE_COMMENT: '/\*' .*? '\*/' -> skip;   
