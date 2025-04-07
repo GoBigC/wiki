@@ -970,7 +970,7 @@
 <p>// Expression precedence (from highest to lowest):<br />
 // 1. Primary expressions (constants, variables, parenthesized)   <br />
 // 2. Postfix operations (arr[i], fn(), x++, x--) -- only support the first 2 <br />
-// 3. Unary operations (!x, ++x, --x) -- only support the first   <br />
+// 3. Unary operations (-x, !x, ++x, --x) -- only support the first two   <br />
 // 4. Multiplicative (*, /)   <br />
 // 5. Additive (+, -) <br />
 // 6. Comparison (&lt;, &lt;=, &gt;=, &gt;)   <br />
@@ -1082,8 +1082,8 @@ CharConstant: '\'' . '\'';  </p>
 <p>IntegerConstant: [0-9]+;  <br />
 FloatingConstant: [0-9]+ '.' [0-9]+;    </p>
 <p>WS: [ \t\r\n]+ -&gt; skip;   <br />
-COMMENT: '//' ~[\r\n]<em> -&gt; skip;   <br />
-MULTILINE_COMMENT: '/</em>' .<em>? '</em>/' -&gt; skip;   </p>
+COMMENT: '//' ~[\r\n]* -&gt; skip;   <br />
+MULTILINE_COMMENT: '/*' .*? '*/' -&gt; skip;   </p>
 
 
 
