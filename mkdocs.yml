@@ -14,14 +14,14 @@ theme:
     - search.highlight
   palette:
     - scheme: default
-      primary: '#02760b'
-      accent: '#02760b'
+      primary: green
+      accent: green
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
     - scheme: slate
-      primary: '#02760b'
-      accent: '#02760b'
+      primary: green
+      accent: green
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode

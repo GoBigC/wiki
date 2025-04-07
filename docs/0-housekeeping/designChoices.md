@@ -4,7 +4,7 @@ The choice to write a compiled language as opposed to an interpreted one is most
 
 As hardwares get more and more powerful, the previously slow execution time of a code snippet is hardly noticeable anymore. Languages that spawned recently are mostly compiled for this reason:
 
-![Programming language timeline (from Dr. Linh Huynh's lecture notes)](assets/timeline.png)
+![Programming language timeline (from Dr. Linh Huynh's lecture notes)](img/timeline.png)
 
 We think that we have significantly more chance to write interpreted languages in future work experiences, and we wanted to take this chance to know what it takes to write a compiled language. 
 

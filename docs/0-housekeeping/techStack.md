@@ -2,8 +2,8 @@
 
 If not ANTLR, we would be working with lex/yacc (flex/bison), which would generate C codes, and it takes an extra step to make that compatible with Go code. The general advice we see is that if we don't have to use lex/yacc (ie. maintaining a legacy compiler that uses these), then we should look for different tools([source1](https://tomassetti.me/why-you-should-not-use-flex-yacc-and-bison/)), ([source2](https://www.reddit.com/r/Compilers/comments/elhy9n/is_flexbison_a_good_choice_for_a_compiler_in_2020/)).
 
-![Question](assets/question.png)
-![Answer](assets/answer.png)
+![Question](img/question.png)
+![Answer](img/answer.png)
 
 Go has its own version of yacc called [goyacc](https://pkg.go.dev/golang.org/x/tools/cmd/goyacc). It is very close to yacc, but native to Go. And by translation, the previous warnings about using lex/yacc still kinda applies. 
 
