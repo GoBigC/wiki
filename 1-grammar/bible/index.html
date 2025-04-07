@@ -967,17 +967,17 @@
 <p>returnStatement 
     : 'return' expression ';'
     ;</p>
-<p>// Expression precedence (from highest to lowest):</p>
-<p>// 1. Primary expressions (constants, variables, parenthesized)</p>
-<p>// 2. Postfix operations (arr[i], fn(), x++, x--) -- only support the first 2</p>
-<p>// 3. Unary operations (!x, ++x, --x) -- only support the first</p>
-<p>// 4. Multiplicative (*, /) </p>
-<p>// 5. Additive (+, -)</p>
-<p>// 6. Comparison (&lt;, &lt;=, &gt;=, &gt;)</p>
-<p>// 7. Equality (==, !=)</p>
-<p>// 8. Logical AND (&amp;&amp;)</p>
-<p>// 9. Logical OR (||)</p>
-<p>// 10. Assignment (=)</p>
+<p>// Expression precedence (from highest to lowest): 
+// 1. Primary expressions (constants, variables, parenthesized) 
+// 2. Postfix operations (arr[i], fn(), x++, x--) -- only support the first 2 
+// 3. Unary operations (!x, ++x, --x) -- only support the first 
+// 4. Multiplicative (*, /)<br />
+// 5. Additive (+, -) 
+// 6. Comparison (&lt;, &lt;=, &gt;=, &gt;) 
+// 7. Equality (==, !=) 
+// 8. Logical AND (&amp;&amp;) 
+// 9. Logical OR (||) 
+// 10. Assignment (=)</p>
 <p>expression 
     : assignmentExpression 
     ;</p>
@@ -1076,14 +1076,14 @@
     | CharConstant 
     ;</p>
 <h2 id="lexer-rules">Lexer Rules<a class="headerlink" href="#lexer-rules" title="Permanent link">&para;</a></h2>
-<p>BooleanConstant: 'true' | 'false';</p>
-<p>CharConstant: '\'' . '\'';</p>
+<p>BooleanConstant: 'true' | 'false'; 
+CharConstant: '\'' . '\'';</p>
 <p>Identifier: [a-zA-Z_][a-zA-Z0-9_]*;</p>
-<p>IntegerConstant: [0-9]+;</p>
-<p>FloatingConstant: [0-9]+ '.' [0-9]+;</p>
-<p>WS: [ \t\r\n]+ -&gt; skip;</p>
-<p>COMMENT: '//' ~[\r\n]* -&gt; skip;</p>
-<p>MULTILINE_COMMENT: '/<em>' .</em>? '*/' -&gt; skip;</p>
+<p>IntegerConstant: [0-9]+; 
+FloatingConstant: [0-9]+ '.' [0-9]+;</p>
+<p>WS: [ \t\r\n]+ -&gt; skip; 
+COMMENT: '//' ~[\r\n]<em> -&gt; skip; 
+MULTILINE_COMMENT: '/</em>' .<em>? '</em>/' -&gt; skip;</p>
 
 
 
