@@ -51,5 +51,7 @@ nav:
       - Interface: 3-semanticAnalyzer/interface.md
     - Code Generator:
       - Interface: 4-codeGenerator/interface.md
+    - Error Handling: 
+      - Notes: 5-errorHandling/errorHandlingNotes.md
     - Contributing: contributing.md
     - FAQ: faq.md
