@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://gobigc.github.io/wiki/0-housekeeping/designChoices/">
+        <link rel="canonical" href="https://gobigc.github.io/wiki/5-errorHandling/errorHandlingNotes/">
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../../4-codeGenerator/interface/">
       
       
-        <link rel="next" href="../techStack/">
+        <link rel="next" href="../../contributing/">
       
       
       <link rel="icon" href="../../assets/favicon.ico">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Design Choices - BigC</title>
+        <title>Notes - BigC</title>
       
     
     
@@ -75,11 +75,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#bigc-is-a-compiled-language" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -109,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Design Choices
+              Notes
             
           </span>
         </div>
@@ -325,8 +320,6 @@
                 
   
   
-    
-  
   
   
     
@@ -341,11 +334,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
         
           
           <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="">
@@ -359,7 +352,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_2">
             <span class="md-nav__icon md-icon"></span>
             Home
@@ -370,19 +363,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../0-housekeeping/designChoices/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -391,7 +375,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -404,7 +387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../techStack/" class="md-nav__link">
+      <a href="../../0-housekeeping/techStack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -802,6 +785,8 @@
                 
   
   
+    
+  
   
   
     
@@ -816,11 +801,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" checked>
         
           
           <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="">
@@ -834,7 +819,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_7">
             <span class="md-nav__icon md-icon"></span>
             Error Handling
@@ -845,10 +830,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../5-errorHandling/errorHandlingNotes/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -857,6 +849,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -934,25 +927,9 @@
                   
 
 
-<h1 id="bigc-is-a-compiled-language">BigC Is a Compiled Language<a class="headerlink" href="#bigc-is-a-compiled-language" title="Permanent link">&para;</a></h1>
-<p>The choice to write a compiled language as opposed to an interpreted one is mostly because we wanted to write a compiler. </p>
-<p>As hardwares get more and more powerful, the previously slow execution time of a code snippet is hardly noticeable anymore. Languages that spawned recently are mostly compiled for this reason:</p>
-<p><img alt="Programming language timeline (from Dr. Linh Huynh's lecture notes)" src="../img/timeline.png" /></p>
-<p>We think that we have significantly more chance to write interpreted languages in future work experiences, and we wanted to take this chance to know what it takes to write a compiled language. </p>
-<h1 id="static-typing-static-scoping">Static Typing &amp; Static Scoping<a class="headerlink" href="#static-typing-static-scoping" title="Permanent link">&para;</a></h1>
-<p>For safety and predictability, BigC requires explicit typing that will be checked during compilation. </p>
-<p>Dynamic scoping is generally not a good idea, though it makes things simpler for us language developers. Dynamically scoped languages like JavaScript or Bash are often used to write short scripts, and that is not the intended direction for BigC. </p>
-<h1 id="targets-the-risc-v-isa">Targets the RISC-V ISA<a class="headerlink" href="#targets-the-risc-v-isa" title="Permanent link">&para;</a></h1>
-<p>Compiling from a high-level language to another high-level language (like C or Java, or god forbid, Python) seems like cheating :) as if it is pseudo-compiling :) </p>
-<p>So to put ourselves to the challenge, we decided to compile our language to an assembly language.</p>
-<p>So why RISC-V? </p>
-<p>It seems like a rising ISA and we want to know what's up :D It's also always a good use of time to learn assembly (right?)</p>
-<h1 id="function-arguments-are-pass-by-value">Function Arguments are Pass-By-Value<a class="headerlink" href="#function-arguments-are-pass-by-value" title="Permanent link">&para;</a></h1>
-<p>This choice was made out of practicality: Pass-By-Reference is hard :) and we believe that to do a good job at it, we need to know how to implement Pass-By-Value anyways. </p>
-<p>To get this project started, we were advised to only supports Pass-By-Value. </p>
-<h1 id="compiler-written-in-go">Compiler Written In Go<a class="headerlink" href="#compiler-written-in-go" title="Permanent link">&para;</a></h1>
-<p>Because many companies are writing or even rewriting their tools in Go. Most recently Microsoft decided to write their TypeScript engine in Go (<a href="https://github.com/microsoft/typescript-go/discussions/411">see here</a>). </p>
-<p>And once again, we'd like to know why the language is so loved :)</p>
+  <h1>Notes</h1>
+
+
 
 
 
