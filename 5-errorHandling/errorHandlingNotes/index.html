@@ -1158,12 +1158,12 @@ Syntax Error: missing &#39;;&#39; at end of declaration
 </code></pre></div>
 <h3 id="error-categories">Error Categories<a class="headerlink" href="#error-categories" title="Permanent link">&para;</a></h3>
 <p>The syntax error handler recognizes several common error patterns:
-- Missing braces and brackets
-- Missing semicolons
-- Invalid identifiers
-- Unexpected type keywords
-- Mismatched parentheses
-- Incomplete array declarations</p>
+1. Missing braces and brackets
+2. Missing semicolons
+3. Invalid identifiers
+4. Unexpected type keywords
+5. Mismatched parentheses
+6. Incomplete array declarations</p>
 <h2 id="semantic-error-handling">Semantic Error Handling<a class="headerlink" href="#semantic-error-handling" title="Permanent link">&para;</a></h2>
 <h3 id="how-it-works_1">How It Works<a class="headerlink" href="#how-it-works_1" title="Permanent link">&para;</a></h3>
 <p>Since ANTLR doesn't handle semantic analysis, we implement our own semantic analyzer that:</p>
@@ -1197,12 +1197,12 @@ Semantic Error: type mismatch: expected bool, got int
 </code></pre></div>
 <h3 id="error-detection-features">Error Detection Features<a class="headerlink" href="#error-detection-features" title="Permanent link">&para;</a></h3>
 <p>The semantic error formatter includes specialized handling for:
-- Function argument count mismatches
-- Return type mismatches
-- Array access on non-array types
-- Undefined symbols
-- Type compatibility errors
-- Invalid operator usage</p>
+1. Function argument count mismatches
+2. Return type mismatches
+3. Array access on non-array types
+4. Undefined symbols
+5. Type compatibility errors
+6. Invalid operator usage</p>
 <h2 id="error-reporting-flow">Error Reporting Flow<a class="headerlink" href="#error-reporting-flow" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Source code is parsed by ANTLR with our custom <code>NewSyntaxErrorFormatter</code></li>
