@@ -49,12 +49,12 @@ Syntax Error: missing ';' at end of declaration
 ### Error Categories
 
 The syntax error handler recognizes several common error patterns:
-- Missing braces and brackets
-- Missing semicolons
-- Invalid identifiers
-- Unexpected type keywords
-- Mismatched parentheses
-- Incomplete array declarations
+1. Missing braces and brackets
+2. Missing semicolons
+3. Invalid identifiers
+4. Unexpected type keywords
+5. Mismatched parentheses
+6. Incomplete array declarations
 
 ## Semantic Error Handling
 
@@ -65,12 +65,12 @@ Since ANTLR doesn't handle semantic analysis, we implement our own semantic anal
 1. Index out of bound
 2. Divide by zero
 3. Type mismatch:
-  - Assignment type mismatch
-  - Function return type mismatch
-  - Operator type mismatch
-  - Function argument type mismatch
+4. Assignment type mismatch
+5. Function return type mismatch
+6. Operator type mismatch
+7. Function argument type mismatch
 4. Invalid function
-  - Argument count mismatch
+8. Argument count mismatch
 5. Undefined symbol
 6. Variable out of scope
 
@@ -100,12 +100,12 @@ Semantic Error: type mismatch: expected bool, got int
 ### Error Detection Features
 
 The semantic error formatter includes specialized handling for:
-- Function argument count mismatches
-- Return type mismatches
-- Array access on non-array types
-- Undefined symbols
-- Type compatibility errors
-- Invalid operator usage
+1. Function argument count mismatches
+2. Return type mismatches
+3. Array access on non-array types
+4. Undefined symbols
+5. Type compatibility errors
+6. Invalid operator usage
 
 ## Error Reporting Flow
 
