@@ -18,7 +18,7 @@ Dynamic scoping is generally not a good idea, though it makes things simpler for
 
 Compiling from a high-level language to another high-level language (like C or Java, or god forbid, Python) seems like cheating :) as if it is pseudo-compiling :) 
 
-So to put ourselves to the challenge, we decided to compile our language to an assembly language.
+So to put ourselves to the challenge, we decided to compile our language to an assembly language. But to not make it too hard, we only write bare-metal assembly, which means bypassing the OS (like Linux), which means BigC does not cooperate with any operating system. 
 
 So why RISC-V? 
 

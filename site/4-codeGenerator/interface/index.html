@@ -937,9 +937,10 @@
 <h1 id="code-generator-interface">Code Generator Interface<a class="headerlink" href="#code-generator-interface" title="Permanent link">&para;</a></h1>
 <ul>
 <li>Input: Annotated Abstract Syntax Tree </li>
-<li>Output: RISC-V assembly</li>
+<li>Output: Bare-metal RISC-V assembly</li>
 </ul>
-<p>Source code repo: <a href=""></a> </p>
+<p>Source code repo: <a href="https://github.com/GoBigC/BigC/tree/main/pkg/codegen">https://github.com/GoBigC/BigC/tree/main/pkg/codegen</a> </p>
+<p>We generate bare-metal RISC-V assembly, meaning it probably will not work on any OS. The resulting assembly code would be run on <a href="https://github.com/GoBigC/rars">RARS the RISC-V assembler simulator</a>. </p>
 
 
 

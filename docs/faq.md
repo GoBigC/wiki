@@ -15,3 +15,7 @@ We were originally called "TheBroccoliFarmers", but had to change the organizati
 4. Why BigC? 
 
 Because we think it's funny. 
+
+5. Useful facts? 
+- BigC compiles to **bare-metal** RISC-V assembly, which makes the language compliant with **ZERO** operating system
+- This choice was made out of practicality: we are too silly to support OS compliance 
