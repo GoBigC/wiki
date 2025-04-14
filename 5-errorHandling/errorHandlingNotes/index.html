@@ -1169,7 +1169,7 @@ Syntax Error: missing &#39;;&#39; at end of declaration
 <h2 id="semantic-error-handling">Semantic Error Handling<a class="headerlink" href="#semantic-error-handling" title="Permanent link">&para;</a></h2>
 <h3 id="how-it-works_1">How It Works<a class="headerlink" href="#how-it-works_1" title="Permanent link">&para;</a></h3>
 <p>Since ANTLR doesn't handle semantic analysis, we implement our own semantic analyzer that:</p>
-<ol>
+<ul>
 <li>Index out of bound</li>
 <li>Divide by zero</li>
 <li>
@@ -1193,7 +1193,7 @@ Syntax Error: missing &#39;;&#39; at end of declaration
 <p>Undefined symbol</p>
 </li>
 <li>Variable out of scope</li>
-</ol>
+</ul>
 <p>The <code>NewSemanticErrorFormatter</code> then formats these errors in a consistent style.</p>
 <h3 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h3>
 <p>For input like:</p>
