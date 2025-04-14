@@ -67,14 +67,14 @@ Since ANTLR doesn't handle semantic analysis, we implement our own semantic anal
 - Divide by zero
 - Type mismatch:
 
-  - Assignment type mismatch
-  - Function return type mismatch
-  - Operator type mismatch
-  - Function argument type mismatch
+  + Assignment type mismatch
+  + Function return type mismatch
+  + Operator type mismatch
+  + Function argument type mismatch
 
 - Invalid function:
 
- - Argument count mismatch
+ + Argument count mismatch
 
 - Undefined symbol
 - Variable out of scope
