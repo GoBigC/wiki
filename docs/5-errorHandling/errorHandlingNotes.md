@@ -63,21 +63,21 @@ The syntax error handler recognizes several common error patterns:
 
 Since ANTLR doesn't handle semantic analysis, we implement our own semantic analyzer that:
 
-1. Index out of bound
-2. Divide by zero
-3. Type mismatch:
+- Index out of bound
+- Divide by zero
+- Type mismatch:
 
   - Assignment type mismatch
   - Function return type mismatch
   - Operator type mismatch
   - Function argument type mismatch
 
-4. Invalid function:
+- Invalid function:
 
  - Argument count mismatch
- 
-5. Undefined symbol
-6. Variable out of scope
+
+- Undefined symbol
+- Variable out of scope
 
 The `NewSemanticErrorFormatter` then formats these errors in a consistent style.
 
