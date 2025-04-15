@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://gobigc.github.io/wiki/2-syntaxAnalyzer/interface/">
+        <link rel="canonical" href="https://gobigc.github.io/wiki/3-semanticAnalyzer/semantic-analyzer/">
       
       
-        <link rel="prev" href="../../1-grammar/sample/">
+        <link rel="prev" href="../symbol-table/">
       
       
-        <link rel="next" href="../sample-ast-tree/">
+        <link rel="next" href="../../4-codeGenerator/interface/">
       
       
       <link rel="icon" href="../../assets/favicon.ico">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Interface - BigC</title>
+        <title>Semantic Analyzer - BigC</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#syntax-analyzer-interface" class="md-skip">
+        <a href="#overview-of-how-the-analyzer-works" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Interface
+              Semantic Analyzer
             
           </span>
         </div>
@@ -581,8 +581,6 @@
                 
   
   
-    
-  
   
   
     
@@ -598,11 +596,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
         
           
           <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="">
@@ -618,7 +616,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_4">
             <span class="md-nav__icon md-icon"></span>
             Syntax Analyzer
@@ -629,19 +627,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../2-syntaxAnalyzer/interface/" class="md-nav__link">
         
   
   
@@ -652,7 +641,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -665,7 +653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sample-ast-tree/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/sample-ast-tree/" class="md-nav__link">
         
   
   
@@ -688,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../syntaxAnalyzerWritingNotes/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/syntaxAnalyzerWritingNotes/" class="md-nav__link">
         
   
   
@@ -716,6 +704,8 @@
                 
   
   
+    
+  
   
   
     
@@ -731,11 +721,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" checked>
         
           
           <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="">
@@ -751,7 +741,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_5">
             <span class="md-nav__icon md-icon"></span>
             Semantic Analyzer
@@ -765,7 +755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../3-semanticAnalyzer/interface/" class="md-nav__link">
+      <a href="../interface/" class="md-nav__link">
         
   
   
@@ -788,7 +778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../3-semanticAnalyzer/symbol-table/" class="md-nav__link">
+      <a href="../symbol-table/" class="md-nav__link">
         
   
   
@@ -808,10 +798,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../3-semanticAnalyzer/semantic-analyzer/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Semantic Analyzer
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -822,6 +834,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#two-pass-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two-pass Approach
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-the-two-pass-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why The Two-pass Approach?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1058,12 +1108,61 @@
 
 
 
-<h1 id="syntax-analyzer-interface">Syntax Analyzer Interface<a class="headerlink" href="#syntax-analyzer-interface" title="Permanent link">&para;</a></h1>
+<h1 id="overview-of-how-the-analyzer-works">Overview of How The Analyzer Works<a class="headerlink" href="#overview-of-how-the-analyzer-works" title="Permanent link">&para;</a></h1>
+<h2 id="two-pass-approach">Two-pass Approach<a class="headerlink" href="#two-pass-approach" title="Permanent link">&para;</a></h2>
+<p>The analyzer uses the two-pass approach:</p>
+<ol>
+<li>First pass: visits all the leaf node of the AST and add all the symbols to the table</li>
+<li>Second pass: Traverse the AST again and analyze it with the complete symbol table from the first pass.</li>
+</ol>
+<h2 id="why-the-two-pass-approach">Why The Two-pass Approach?<a class="headerlink" href="#why-the-two-pass-approach" title="Permanent link">&para;</a></h2>
+<p>The first iteration used a naive approach where the analyzer traverse the AST only once, adding symbols and scanning for errors along the way. But this poses 1 major issue. Look at the code snippet below</p>
+<div class="highlight"><pre><span></span><code>int main() {
+    int a = addInt(1,2);
+    return a;
+}
+
+int addInt(int x, int y) {
+    return x + y;
+}
+</code></pre></div>
+<p>Intuitively, this code has no problems whatsoever (by design). However, the first iteration of semantic analyzers screams at me when it scans the code, saying that <code>addInt is an invalid symbol!</code>. Let this be an exercise to the reader to figure out why the first version of semantic analyzers hate this snippet. This is a very character-developing exercise, trust me.</p>
+<p>If you dislike brain exercises, bonkers. The answer is that at the time <code>addInt</code> was called at <code>int a = addInt(1,2);</code>, the symbol was not added to the table, simply because the analyzer traverses from the root up (or down?), and the function was declared after the function call. The two-pass approach was an easy solution.</p>
+<h1 id="brief-explanation-of-how-each-semantic-error-is-caught">Brief Explanation of How Each Semantic Error is Caught<a class="headerlink" href="#brief-explanation-of-how-each-semantic-error-is-caught" title="Permanent link">&para;</a></h1>
+<h2 id="index-out-of-bound">Index Out of Bound<a class="headerlink" href="#index-out-of-bound" title="Permanent link">&para;</a></h2>
+<p>The array size is stored as a field in the symbol table, so the check is quite straight forward. If the index is a variable, the value of the variable is also checked to scan for out of bounds error.</p>
+<div class="highlight"><pre><span></span><code>int arr[5];
+int x = arr[7]; // ERROR
+
+int y = 7;
+int z = arr[y]; // ALSO ERROR
+</code></pre></div>
+<h2 id="divide-by-zero">Divide by Zero<a class="headerlink" href="#divide-by-zero" title="Permanent link">&para;</a></h2>
+<p>Whenever the <code>/</code> operator is called, we check if the second operand is a zero or not. If yes, we throw the error.</p>
+<h2 id="type-mismatch">Type Mismatch<a class="headerlink" href="#type-mismatch" title="Permanent link">&para;</a></h2>
+<h3 id="assignment-type-mismatch">Assignment Type Mismatch<a class="headerlink" href="#assignment-type-mismatch" title="Permanent link">&para;</a></h3>
+<p>We check if the type in the declaration and the initializer matches or not. The type is inferred from the syntax analysis, so the check is very straightforward.</p>
+<h3 id="function-return-type-mismatch">Function Return Type Mismatch<a class="headerlink" href="#function-return-type-mismatch" title="Permanent link">&para;</a></h3>
+<p>The return type for a function is stored in the symbol table, so this check is also simple.</p>
+<h3 id="operator-type-mismatch">Operator Type Mismatch<a class="headerlink" href="#operator-type-mismatch" title="Permanent link">&para;</a></h3>
+<p>Whenever an operator is called, we check the type of both operands.</p>
 <ul>
-<li>Input: BigC source code </li>
-<li>Output: Abstract Syntax Tree </li>
+<li>Logical operators only allow boolean expressions</li>
+<li>Numerical operators only allow <code>int</code> or <code>float</code>, and both operators must be the same type (we don't support type conversions yet)</li>
 </ul>
-<p>Source code repo: <a href="https://github.com/GoBigC/BigC/tree/main/pkg/syntax">https://github.com/GoBigC/BigC/tree/main/pkg/syntax</a> </p>
+<h3 id="function-argument-type-mismatch">Function Argument Type Mismatch<a class="headerlink" href="#function-argument-type-mismatch" title="Permanent link">&para;</a></h3>
+<p>The arguments in each function are also stored in the symbol table with their type, so the check is similar to other checks above.</p>
+<h2 id="invalid-function">Invalid Function<a class="headerlink" href="#invalid-function" title="Permanent link">&para;</a></h2>
+<h3 id="argument-count-mismatch">Argument Count Mismatch<a class="headerlink" href="#argument-count-mismatch" title="Permanent link">&para;</a></h3>
+<p>The parameters are kept inside an array, so we only need to compare the length of the arguments array and the parameters array.</p>
+<h2 id="undefined-symbol">Undefined Symbol<a class="headerlink" href="#undefined-symbol" title="Permanent link">&para;</a></h2>
+<p>The table is a list of maps, so each variable is assigned a name, and looking up for the symbols is just using the map's query. For variables with the same name but different scope, the key for them will be determined by their scope. Each symbol's key will have a prefix based on the function that they are stored within.</p>
+<div class="highlight"><pre><span></span><code>int addInt(int x, int y) {
+    return x + y; // addInt.x and addInt.y respectively.
+}
+</code></pre></div>
+<h2 id="symbol-out-of-scope">Symbol Out of Scope<a class="headerlink" href="#symbol-out-of-scope" title="Permanent link">&para;</a></h2>
+<p>The valid first line and valid last line of a symbol is stored in the table, so we just check if the line from which the symbol is called fits between the allowed lines.</p>
 
 
 
