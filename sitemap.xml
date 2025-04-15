@@ -2,58 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://gobigc.github.io/wiki/</loc>
-         <lastmod>2025-04-14</lastmod>
+         <lastmod>1980-01-01</lastmod>
     </url>
     <url>
          <loc>https://gobigc.github.io/wiki/contributing/</loc>
-         <lastmod>2025-04-14</lastmod>
+         <lastmod>1980-01-01</lastmod>
     </url>
     <url>
          <loc>https://gobigc.github.io/wiki/faq/</loc>
-         <lastmod>2025-04-14</lastmod>
+         <lastmod>1980-01-01</lastmod>
     </url>
     <url>
          <loc>https://gobigc.github.io/wiki/0-housekeeping/designChoices/</loc>
-         <lastmod>2025-04-14</lastmod>
+         <lastmod>1980-01-01</lastmod>
     </url>
     <url>
          <loc>https://gobigc.github.io/wiki/0-housekeeping/techStack/</loc>
-         <lastmod>2025-04-14</lastmod>
+         <lastmod>1980-01-01</lastmod>
     </url>
     <url>
          <loc>https://gobigc.github.io/wiki/1-grammar/bible/</loc>
-         <lastmod>2025-04-14</lastmod>
+         <lastmod>1980-01-01</lastmod>
     </url>
     <url>
          <loc>https://gobigc.github.io/wiki/1-grammar/proof/</loc>
-         <lastmod>2025-04-14</lastmod>
+         <lastmod>1980-01-01</lastmod>
     </url>
     <url>
          <loc>https://gobigc.github.io/wiki/1-grammar/sample/</loc>
-         <lastmod>2025-04-14</lastmod>
+         <lastmod>1980-01-01</lastmod>
     </url>
     <url>
          <loc>https://gobigc.github.io/wiki/2-syntaxAnalyzer/interface/</loc>
-         <lastmod>2025-04-14</lastmod>
+         <lastmod>1980-01-01</lastmod>
     </url>
     <url>
          <loc>https://gobigc.github.io/wiki/2-syntaxAnalyzer/sample-ast-tree/</loc>
-         <lastmod>2025-04-14</lastmod>
+         <lastmod>1980-01-01</lastmod>
     </url>
     <url>
          <loc>https://gobigc.github.io/wiki/2-syntaxAnalyzer/syntaxAnalyzerWritingNotes/</loc>
-         <lastmod>2025-04-14</lastmod>
+         <lastmod>1980-01-01</lastmod>
     </url>
     <url>
          <loc>https://gobigc.github.io/wiki/3-semanticAnalyzer/interface/</loc>
-         <lastmod>2025-04-14</lastmod>
+         <lastmod>1980-01-01</lastmod>
     </url>
     <url>
          <loc>https://gobigc.github.io/wiki/4-codeGenerator/interface/</loc>
-         <lastmod>2025-04-14</lastmod>
+         <lastmod>1980-01-01</lastmod>
     </url>
     <url>
          <loc>https://gobigc.github.io/wiki/5-errorHandling/errorHandlingNotes/</loc>
-         <lastmod>2025-04-14</lastmod>
+         <lastmod>1980-01-01</lastmod>
     </url>
 </urlset>
