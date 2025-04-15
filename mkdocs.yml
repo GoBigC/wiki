@@ -35,24 +35,26 @@ markdown_extensions:
 
 nav:
   - About BigC:
-    - index.md
-    - Home: 
-      - Design Choices: 0-housekeeping/designChoices.md
-      - Tech Stack: 0-housekeeping/techStack.md
-      - Language Support: 0-housekeeping/vscodeLanguageSupport.md
-    - Grammar:
-      - Bible: 1-grammar/bible.md
-      - Proof: 1-grammar/proof.md
-      - Sample: 1-grammar/sample.md
-    - Syntax Analyzer:
-      - Interface: 2-syntaxAnalyzer/interface.md
-      - Sample AST: 2-syntaxAnalyzer/sample-ast-tree.md
-      - Notes: 2-syntaxAnalyzer/syntaxAnalyzerWritingNotes.md
-    - Semantic Analyzer:
-      - Interface: 3-semanticAnalyzer/interface.md
-    - Code Generator:
-      - Interface: 4-codeGenerator/interface.md
-    - Error Handling: 
-      - Notes: 5-errorHandling/errorHandlingNotes.md
-    - Contributing: contributing.md
-    - FAQ: faq.md
+      - index.md
+      - Home:
+          - Design Choices: 0-housekeeping/designChoices.md
+          - Tech Stack: 0-housekeeping/techStack.md
+          - Language Support: 0-housekeeping/vscodeLanguageSupport.md
+      - Grammar:
+          - Bible: 1-grammar/bible.md
+          - Proof: 1-grammar/proof.md
+          - Sample: 1-grammar/sample.md
+      - Syntax Analyzer:
+          - Interface: 2-syntaxAnalyzer/interface.md
+          - Sample AST: 2-syntaxAnalyzer/sample-ast-tree.md
+          - Notes: 2-syntaxAnalyzer/syntaxAnalyzerWritingNotes.md
+      - Semantic Analyzer:
+          - Interface: 3-semanticAnalyzer/interface.md
+          - Symbol Table Structure: 3-semanticAnalyzer/symbol-table.md
+          - Semantic Analyzer: 3-semanticAnalyzer/semantic-analyzer.md
+      - Code Generator:
+          - Interface: 4-codeGenerator/interface.md
+      - Error Handling:
+          - Notes: 5-errorHandling/errorHandlingNotes.md
+      - Contributing: contributing.md
+      - FAQ: faq.md
