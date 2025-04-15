@@ -5,16 +5,13 @@
     - [@brokisd](https://github.com/BroKisD) (Khoa) - Farmer #3
 
 2. Why? 
-
-N/A
+- N/A
 
 3. Why the broccoli logo? 
-
-We were originally called "TheBroccoliFarmers", but had to change the organization's name due to practicality. 
+- We were originally called "TheBroccoliFarmers", but had to change the organization's name due to practicality. 
 
 4. Why BigC? 
-
-Because we think it's funny. 
+- Because we think it's funny. 
 
 5. Useful facts? 
 - BigC compiles to **bare-metal** RISC-V assembly, which makes the language compliant with **ZERO** operating system
