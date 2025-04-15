@@ -39,6 +39,7 @@ nav:
     - Home: 
       - Design Choices: 0-housekeeping/designChoices.md
       - Tech Stack: 0-housekeeping/techStack.md
+      - Language Support: 0-housekeeping/vscodeLanguageSupport.md
     - Grammar:
       - Bible: 1-grammar/bible.md
       - Proof: 1-grammar/proof.md
