@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://gobigc.github.io/wiki/contributing/">
+        <link rel="canonical" href="https://gobigc.github.io/wiki/4-codeGenerator/rv64m/">
       
       
-        <link rel="prev" href="../5-errorHandling/errorHandlingNotes/">
+        <link rel="prev" href="../rv64i/">
       
       
-        <link rel="next" href="../faq/">
+        <link rel="next" href="../rv64d/">
       
       
-      <link rel="icon" href="../assets/favicon.ico">
+      <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
-        <title>Contributing - BigC</title>
+        <title>RV64M instructions - BigC</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,7 +50,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#want-to-contribute-to-bigc" class="md-skip">
+        <a href="#risc-v-rv64m-instruction-set" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +90,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="BigC" class="md-header__button md-logo" aria-label="BigC" data-md-component="logo">
+    <a href="../.." title="BigC" class="md-header__button md-logo" aria-label="BigC" data-md-component="logo">
       
-  <img src="../assets/apple-touch-icon.png" alt="logo">
+  <img src="../../assets/apple-touch-icon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Contributing
+              RV64M instructions
             
           </span>
         </div>
@@ -210,7 +210,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href=".." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   About BigC
@@ -245,9 +245,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="BigC" class="md-nav__button md-logo" aria-label="BigC" data-md-component="logo">
+    <a href="../.." title="BigC" class="md-nav__button md-logo" aria-label="BigC" data-md-component="logo">
       
-  <img src="../assets/apple-touch-icon.png" alt="logo">
+  <img src="../../assets/apple-touch-icon.png" alt="logo">
 
     </a>
     BigC
@@ -307,7 +307,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -371,7 +371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-housekeeping/designChoices/" class="md-nav__link">
+      <a href="../../0-housekeeping/designChoices/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -392,7 +392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-housekeeping/techStack/" class="md-nav__link">
+      <a href="../../0-housekeeping/techStack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -413,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-housekeeping/vscodeLanguageSupport/" class="md-nav__link">
+      <a href="../../0-housekeeping/vscodeLanguageSupport/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -485,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-grammar/bible/" class="md-nav__link">
+      <a href="../../1-grammar/bible/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -506,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-grammar/proof/" class="md-nav__link">
+      <a href="../../1-grammar/proof/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -527,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-grammar/sample/" class="md-nav__link">
+      <a href="../../1-grammar/sample/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -599,7 +599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-syntaxAnalyzer/interface/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/interface/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -620,7 +620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-syntaxAnalyzer/sampleAST/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/sampleAST/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -641,7 +641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-syntaxAnalyzer/syntaxAnalyzerWritingNotes/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/syntaxAnalyzerWritingNotes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -713,7 +713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-semanticAnalyzer/interface/" class="md-nav__link">
+      <a href="../../3-semanticAnalyzer/interface/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -734,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-semanticAnalyzer/symbolTable/" class="md-nav__link">
+      <a href="../../3-semanticAnalyzer/symbolTable/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -755,7 +755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-semanticAnalyzer/semanticAnalyzer/" class="md-nav__link">
+      <a href="../../3-semanticAnalyzer/semanticAnalyzer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -781,6 +781,8 @@
                 
   
   
+    
+  
   
   
     
@@ -795,11 +797,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" checked>
         
           
           <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="">
@@ -813,7 +815,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_6">
             <span class="md-nav__icon md-icon"></span>
             Code Generator
@@ -827,7 +829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/interface/" class="md-nav__link">
+      <a href="../interface/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -848,7 +850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/riscvModes/" class="md-nav__link">
+      <a href="../riscvModes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -869,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/registerDefinitions/" class="md-nav__link">
+      <a href="../registerDefinitions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -890,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/rv64i/" class="md-nav__link">
+      <a href="../rv64i/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -908,10 +910,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../4-codeGenerator/rv64m/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    RV64M instructions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -920,6 +942,143 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mul" class="md-nav__link">
+    <span class="md-ellipsis">
+      mul
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mulh" class="md-nav__link">
+    <span class="md-ellipsis">
+      mulh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mulhsu" class="md-nav__link">
+    <span class="md-ellipsis">
+      mulhsu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mulhu" class="md-nav__link">
+    <span class="md-ellipsis">
+      mulhu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#div" class="md-nav__link">
+    <span class="md-ellipsis">
+      div
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#divu" class="md-nav__link">
+    <span class="md-ellipsis">
+      divu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rem" class="md-nav__link">
+    <span class="md-ellipsis">
+      rem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remu" class="md-nav__link">
+    <span class="md-ellipsis">
+      remu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mulw" class="md-nav__link">
+    <span class="md-ellipsis">
+      mulw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#divw" class="md-nav__link">
+    <span class="md-ellipsis">
+      divw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#divuw" class="md-nav__link">
+    <span class="md-ellipsis">
+      divuw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remw" class="md-nav__link">
+    <span class="md-ellipsis">
+      remw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remuw" class="md-nav__link">
+    <span class="md-ellipsis">
+      remuw
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -932,7 +1091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/rv64d/" class="md-nav__link">
+      <a href="../rv64d/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1004,7 +1163,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-errorHandling/errorHandlingNotes/" class="md-nav__link">
+      <a href="../../5-errorHandling/errorHandlingNotes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1030,19 +1189,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1051,7 +1201,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1064,7 +1213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../faq/" class="md-nav__link">
+      <a href="../../faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1100,8 +1249,151 @@
                   
 
 
-<h1 id="want-to-contribute-to-bigc">Want to contribute to BigC?<a class="headerlink" href="#want-to-contribute-to-bigc" title="Permanent link">&para;</a></h1>
-<p>It's all here, clone, fork, whatever you want! </p>
+<h1 id="risc-v-rv64m-instruction-set">RISC-V RV64M Instruction Set<a class="headerlink" href="#risc-v-rv64m-instruction-set" title="Permanent link">&para;</a></h1>
+<p>Copied from <a href="https://msyksphinz-self.github.io/riscv-isadoc/html/rvm.html">https://msyksphinz-self.github.io/riscv-isadoc/html/rvm.html</a> and <a href="https://msyksphinz-self.github.io/riscv-isadoc/html/rv64m.html">https://msyksphinz-self.github.io/riscv-isadoc/html/rv64m.html</a></p>
+<h2 id="mul">mul<a class="headerlink" href="#mul" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>mul rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs an XLEN-bit × XLEN-bit multiplication of signed rs1 by signed rs2 and places the lower XLEN bits in the destination register.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] × x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|01   |rs2  |rs1  |000  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="mulh">mulh<a class="headerlink" href="#mulh" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>mulh rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs an XLEN-bit × XLEN-bit multiplication of signed rs1 by signed rs2 and places the upper XLEN bits in the destination register.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = (x[rs1] s×s x[rs2]) &gt;&gt;s XLEN</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|01   |rs2  |rs1  |001  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="mulhsu">mulhsu<a class="headerlink" href="#mulhsu" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>mulhsu rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs an XLEN-bit × XLEN-bit multiplication of signed rs1 by unsigned rs2 and places the upper XLEN bits in the destination register.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = (x[rs1] s× x[rs2]) &gt;&gt;s XLEN</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|01   |rs2  |rs1  |010  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="mulhu">mulhu<a class="headerlink" href="#mulhu" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>mulhu rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs an XLEN-bit × XLEN-bit multiplication of unsigned rs1 by unsigned rs2 and places the upper XLEN bits in the destination register.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = (x[rs1] u× x[rs2]) &gt;&gt;u XLEN</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|01   |rs2  |rs1  |011  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="div">div<a class="headerlink" href="#div" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>div rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Perform an XLEN bits by XLEN bits signed integer division of rs1 by rs2, rounding towards zero.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] /s x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|01   |rs2  |rs1  |100  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="divu">divu<a class="headerlink" href="#divu" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>divu rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Perform an XLEN bits by XLEN bits unsigned integer division of rs1 by rs2, rounding towards zero.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] /u x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|01   |rs2  |rs1  |101  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="rem">rem<a class="headerlink" href="#rem" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>rem rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Perform an XLEN bits by XLEN bits signed integer reminder of rs1 by rs2.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] %s x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|01   |rs2  |rs1  |110  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="remu">remu<a class="headerlink" href="#remu" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>remu rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Perform an XLEN bits by XLEN bits unsigned integer reminder of rs1 by rs2.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] %u x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|01   |rs2  |rs1  |111  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="mulw">mulw<a class="headerlink" href="#mulw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>mulw rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs multiplication operation on the lower 32 bits of the source registers.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext((x[rs1] × x[rs2])[31:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|01   |rs2  |rs1  |000  |rd   |01110|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="divw">divw<a class="headerlink" href="#divw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>divw rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Perform an 32 bits by 32 bits signed integer division of rs1 by rs2.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext(x[rs1][31:0] /s x[rs2][31:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|01   |rs2  |rs1  |100  |rd   |01110|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="divuw">divuw<a class="headerlink" href="#divuw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>divuw rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Perform an 32 bits by 32 bits unsigned integer division of rs1 by rs2.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext(x[rs1][31:0] /u x[rs2][31:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|01   |rs2  |rs1  |101  |rd   |01110|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="remw">remw<a class="headerlink" href="#remw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>remw rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Perform an 32 bits by 32 bits signed integer reminder of rs1 by rs2.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext(x[rs1][31:0] %s x[rs2][31:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|01   |rs2  |rs1  |110  |rd   |01110|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="remuw">remuw<a class="headerlink" href="#remuw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>remuw rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Perform an 32 bits by 32 bits unsigned integer reminder of rs1 by rs2.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext(x[rs1][31:0] %u x[rs2][31:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|01   |rs2  |rs1  |111  |rd   |01110|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
 
 
 
@@ -1148,10 +1440,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>

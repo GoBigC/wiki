@@ -1,0 +1,1897 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="BigC Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://gobigc.github.io/wiki/4-codeGenerator/rv64d/">
+      
+      
+        <link rel="prev" href="../rv64m/">
+      
+      
+        <link rel="next" href="../../5-errorHandling/errorHandlingNotes/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+    
+    
+      
+        <title>RV64D instructions - BigC</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#risc-v-rv64d-instruction-set" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BigC" class="md-header__button md-logo" aria-label="BigC" data-md-component="logo">
+      
+  <img src="../../assets/apple-touch-icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BigC
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RV64D instructions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  About BigC
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BigC" class="md-nav__button md-logo" aria-label="BigC" data-md-component="logo">
+      
+  <img src="../../assets/apple-touch-icon.png" alt="logo">
+
+    </a>
+    BigC
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    About BigC
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            About BigC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About BigC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0-housekeeping/designChoices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Choices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0-housekeeping/techStack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech Stack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0-housekeeping/vscodeLanguageSupport/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Language Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Grammar
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Grammar
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-grammar/bible/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bible
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-grammar/proof/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Proof
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-grammar/sample/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Syntax Analyzer
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Syntax Analyzer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-syntaxAnalyzer/interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-syntaxAnalyzer/sampleAST/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample AST
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-syntaxAnalyzer/syntaxAnalyzerWritingNotes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Semantic Analyzer
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Semantic Analyzer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-semanticAnalyzer/interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-semanticAnalyzer/symbolTable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Symbol Table Structure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-semanticAnalyzer/semanticAnalyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semantic Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Code Generator
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Code Generator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../riscvModes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RV64 Modes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../registerDefinitions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Register Definitions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rv64i/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RV64I instructions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rv64m/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RV64M instructions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    RV64D instructions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    RV64D instructions
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fmaddd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fmadd.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fmsubd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fmsub.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fnmsubd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fnmsub.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fnmaddd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fnmadd.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faddd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fadd.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsubd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fsub.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fmuld" class="md-nav__link">
+    <span class="md-ellipsis">
+      fmul.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fdivd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fdiv.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsqrtd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fsqrt.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsgnjd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fsgnj.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsgnjnd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fsgnjn.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsgnjxd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fsgnjx.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fmind" class="md-nav__link">
+    <span class="md-ellipsis">
+      fmin.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fmaxd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fmax.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fcvtsd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fcvt.s.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fcvtds" class="md-nav__link">
+    <span class="md-ellipsis">
+      fcvt.d.s
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feqd" class="md-nav__link">
+    <span class="md-ellipsis">
+      feq.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fltd" class="md-nav__link">
+    <span class="md-ellipsis">
+      flt.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fled" class="md-nav__link">
+    <span class="md-ellipsis">
+      fle.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fclassd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fclass.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fcvtwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fcvt.w.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fcvtwud" class="md-nav__link">
+    <span class="md-ellipsis">
+      fcvt.wu.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fcvtdw" class="md-nav__link">
+    <span class="md-ellipsis">
+      fcvt.d.w
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fcvtdwu" class="md-nav__link">
+    <span class="md-ellipsis">
+      fcvt.d.wu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fld" class="md-nav__link">
+    <span class="md-ellipsis">
+      fld
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fsd
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fcvtld" class="md-nav__link">
+    <span class="md-ellipsis">
+      fcvt.l.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fcvtlud" class="md-nav__link">
+    <span class="md-ellipsis">
+      fcvt.lu.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fmvxd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fmv.x.d
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fcvtdl" class="md-nav__link">
+    <span class="md-ellipsis">
+      fcvt.d.l
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fcvtdlu" class="md-nav__link">
+    <span class="md-ellipsis">
+      fcvt.d.lu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fmvdx" class="md-nav__link">
+    <span class="md-ellipsis">
+      fmv.d.x
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="fmv.d.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#floating-point-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Floating-Point Classification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Error Handling
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Error Handling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-errorHandling/errorHandlingNotes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="risc-v-rv64d-instruction-set">RISC-V RV64D Instruction Set<a class="headerlink" href="#risc-v-rv64d-instruction-set" title="Permanent link">&para;</a></h1>
+<p>Copied from <a href="https://msyksphinz-self.github.io/riscv-isadoc/html/rvfd.html">https://msyksphinz-self.github.io/riscv-isadoc/html/rvfd.html</a> and <a href="https://msyksphinz-self.github.io/riscv-isadoc/html/rv64d.html">https://msyksphinz-self.github.io/riscv-isadoc/html/rv64d.html</a>.</p>
+<h2 id="fmaddd">fmadd.d<a class="headerlink" href="#fmaddd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fmadd.d rd,rs1,rs2,rs3</code></p>
+<p><strong>Description:</strong> Perform double-precision fused multiply addition.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = f[rs1]×f[rs2]+f[rs3]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
+|-----|-----|-----|-----|-----|-----|-----|---|
+|rs3  |01   |rs2  |rs1  |rm   |rd   |10000|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fmsubd">fmsub.d<a class="headerlink" href="#fmsubd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fmsub.d rd,rs1,rs2,rs3</code></p>
+<p><strong>Description:</strong> Perform double-precision fused multiply subtraction.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = f[rs1]×f[rs2]-f[rs3]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|rs3  |01   |rs2  |rs1  |rm   |rd   |10001|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fnmsubd">fnmsub.d<a class="headerlink" href="#fnmsubd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fnmsub.d rd,rs1,rs2,rs3</code></p>
+<p><strong>Description:</strong> Perform double-precision negated fused multiply subtraction.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = -f[rs1]×f[rs2]+f[rs3]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|rs3  |01   |rs2  |rs1  |rm   |rd   |10010|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fnmaddd">fnmadd.d<a class="headerlink" href="#fnmaddd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fnmadd.d rd,rs1,rs2,rs3</code></p>
+<p><strong>Description:</strong> Perform double-precision negated fused multiply addition.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = -f[rs1]×f[rs2]-f[rs3]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|rs3  |01   |rs2  |rs1  |rm   |rd   |10011|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="faddd">fadd.d<a class="headerlink" href="#faddd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fadd.d rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Perform double-precision floating-point addition.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = f[rs1] + f[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|01   |rs2  |rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fsubd">fsub.d<a class="headerlink" href="#fsubd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fsub.d rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Perform double-precision floating-point subtraction.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = f[rs1] - f[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00001|01   |rs2  |rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fmuld">fmul.d<a class="headerlink" href="#fmuld" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fmul.d rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Perform double-precision floating-point multiplication.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = f[rs1] × f[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00010|01   |rs2  |rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fdivd">fdiv.d<a class="headerlink" href="#fdivd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fdiv.d rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Perform double-precision floating-point division.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = f[rs1] / f[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00011|01   |rs2  |rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fsqrtd">fsqrt.d<a class="headerlink" href="#fsqrtd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fsqrt.d rd,rs1</code></p>
+<p><strong>Description:</strong> Perform double-precision square root.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = sqrt(f[rs1])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|01011|01   |00000|rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fsgnjd">fsgnj.d<a class="headerlink" href="#fsgnjd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fsgnj.d rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Produce a result that takes all bits except the sign bit from rs1. The result's sign bit is rs2's sign bit.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = {f[rs2][63], f[rs1][62:0]}</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00100|01   |rs2  |rs1  |000  |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fsgnjnd">fsgnjn.d<a class="headerlink" href="#fsgnjnd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fsgnjn.d rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Produce a result that takes all bits except the sign bit from rs1. The result's sign bit is opposite of rs2's sign bit.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = {~f[rs2][63], f[rs1][62:0]}</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00100|01   |rs2  |rs1  |001  |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fsgnjxd">fsgnjx.d<a class="headerlink" href="#fsgnjxd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fsgnjx.d rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Produce a result that takes all bits except the sign bit from rs1. The result's sign bit is XOR of sign bit of rs1 and rs2.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = {f[rs1][63] ^ f[rs2][63], f[rs1][62:0]}</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00100|01   |rs2  |rs1  |010  |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fmind">fmin.d<a class="headerlink" href="#fmind" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fmin.d rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Write the smaller of double precision data in rs1 and rs2 to rd.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = min(f[rs1], f[rs2])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00101|01   |rs2  |rs1  |000  |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fmaxd">fmax.d<a class="headerlink" href="#fmaxd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fmax.d rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Write the larger of double precision data in rs1 and rs2 to rd.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = max(f[rs1], f[rs2])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00101|01   |rs2  |rs1  |001  |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fcvtsd">fcvt.s.d<a class="headerlink" href="#fcvtsd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fcvt.s.d rd,rs1</code></p>
+<p><strong>Description:</strong> Converts double floating-point register in rs1 into a single-precision floating-point number in floating-point register rd.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = f32_{f64}(f[rs1])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|01000|00   |00001|rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fcvtds">fcvt.d.s<a class="headerlink" href="#fcvtds" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fcvt.d.s rd,rs1</code></p>
+<p><strong>Description:</strong> Converts single floating-point register in rs1 into a double floating-point number in floating-point register rd.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = f64_{f32}(f[rs1])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|01000|01   |00000|rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="feqd">feq.d<a class="headerlink" href="#feqd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>feq.d rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs a quiet equal comparison between floating-point registers rs1 and rs2 and record the Boolean result in integer register rd. Only signaling NaN inputs cause an Invalid Operation exception. The result is 0 if either operand is NaN.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = f[rs1] == f[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|10100|01   |rs2  |rs1  |010  |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fltd">flt.d<a class="headerlink" href="#fltd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>flt.d rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs a quiet less-than comparison between floating-point registers rs1 and rs2 and record the Boolean result in integer register rd. Only signaling NaN inputs cause an Invalid Operation exception. The result is 0 if either operand is NaN.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = f[rs1] &lt; f[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|10100|01   |rs2  |rs1  |001  |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fled">fle.d<a class="headerlink" href="#fled" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fle.d rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs a quiet less-than-or-equal comparison between floating-point registers rs1 and rs2 and record the Boolean result in integer register rd. Only signaling NaN inputs cause an Invalid Operation exception. The result is 0 if either operand is NaN.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = f[rs1] &lt;= f[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|10100|01   |rs2  |rs1  |000  |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fclassd">fclass.d<a class="headerlink" href="#fclassd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fclass.d rd,rs1</code></p>
+<p><strong>Description:</strong> Examines the value in floating-point register rs1 and writes to integer register rd a 10-bit mask that indicates the class of the floating-point number. The corresponding bit in rd will be set if the property is true and clear otherwise. All other bits in rd are cleared. Note that exactly one bit in rd will be set.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = classifyd(f[rs1])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|11100|01   |00000|rs1  |001  |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fcvtwd">fcvt.w.d<a class="headerlink" href="#fcvtwd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fcvt.w.d rd,rs1</code></p>
+<p><strong>Description:</strong> Converts a double-precision floating-point number in floating-point register rs1 to a signed 32-bit integer, in integer register rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext(s32_{f64}(f[rs1]))</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|11000|01   |00000|rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fcvtwud">fcvt.wu.d<a class="headerlink" href="#fcvtwud" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fcvt.wu.d rd,rs1</code></p>
+<p><strong>Description:</strong> Converts a double-precision floating-point number in floating-point register rs1 to an unsigned 32-bit integer, in integer register rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext(u32_{f64}(f[rs1]))</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|11000|01   |00001|rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fcvtdw">fcvt.d.w<a class="headerlink" href="#fcvtdw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fcvt.d.w rd,rs1</code></p>
+<p><strong>Description:</strong> Converts a 32-bit signed integer, in integer register rs1 into a double-precision floating-point number in floating-point register rd.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = f64_{s32}(x[rs1])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|11010|01   |00000|rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fcvtdwu">fcvt.d.wu<a class="headerlink" href="#fcvtdwu" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fcvt.d.wu rd,rs1</code></p>
+<p><strong>Description:</strong> Converts a 32-bit unsigned integer, in integer register rs1 into a double-precision floating-point number in floating-point register rd.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = f64_{u32}(x[rs1])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|11010|01   |00001|rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fld">fld<a class="headerlink" href="#fld" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fld rd,offset(rs1)</code></p>
+<p><strong>Description:</strong> Load a double-precision floating-point value from memory into floating-point register rd.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = M[x[rs1] + sext(offset)][63:0]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|imm[11:0]        |rs1  |011  |rd   |00001|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fsd">fsd<a class="headerlink" href="#fsd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fsd rs2,offset(rs1)</code></p>
+<p><strong>Description:</strong> Store a double-precision value from the floating-point registers to memory.</p>
+<p><strong>Implementation:</strong> <code>M[x[rs1] + sext(offset)] = f[rs2][63:0]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+--------+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7    |6-2  |1-0|
++-----+-----+-----+-----+-----+--------+-----+---+
+|imm[11:5]  |rs2  |rs1  |011  |imm[4:0]|01001|11 |
++-----+-----+-----+-----+-----+--------+-----+---+
+</code></pre></div></p>
+<h2 id="fcvtld">fcvt.l.d<a class="headerlink" href="#fcvtld" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fcvt.l.d rd,rs1</code></p>
+<p><strong>Description:</strong> Converts a double-precision floating-point value to a 64-bit signed integer.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = s64_{f64}(f[rs1])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|11000|01   |00010|rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fcvtlud">fcvt.lu.d<a class="headerlink" href="#fcvtlud" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fcvt.lu.d rd,rs1</code></p>
+<p><strong>Description:</strong> Converts a double-precision floating-point value to a 64-bit unsigned integer.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = u64_{f64}(f[rs1])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|11000|01   |00011|rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fmvxd">fmv.x.d<a class="headerlink" href="#fmvxd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fmv.x.d rd,rs1</code></p>
+<p><strong>Description:</strong> Moves the double-precision value from floating-point register to integer register.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = f[rs1][63:0]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|11100|01   |00000|rs1  |000  |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fcvtdl">fcvt.d.l<a class="headerlink" href="#fcvtdl" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fcvt.d.l rd,rs1</code></p>
+<p><strong>Description:</strong> Converts a 64-bit signed integer to a double-precision floating-point value.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = f64_{s64}(x[rs1])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|11010|01   |00010|rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fcvtdlu">fcvt.d.lu<a class="headerlink" href="#fcvtdlu" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fcvt.d.lu rd,rs1</code></p>
+<p><strong>Description:</strong> Converts a 64-bit unsigned integer to a double-precision floating-point value.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = f64_{u64}(x[rs1])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|11010|01   |00011|rs1  |rm   |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fmvdx">fmv.d.x<a class="headerlink" href="#fmvdx" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fmv.d.x rd,rs1</code></p>
+<p><strong>Description:</strong> Moves the 64-bit integer from integer register to floating-point register.</p>
+<p><strong>Implementation:</strong> <code>f[rd] = x[rs1][63:0]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|11110|01   |00000|rs1  |000  |rd   |10100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h3 id="floating-point-classification">Floating-Point Classification<a class="headerlink" href="#floating-point-classification" title="Permanent link">&para;</a></h3>
+<p>The <code>fclass.d</code> instruction sets bits in the destination register according to this table:</p>
+<table>
+<thead>
+<tr>
+<th>rd bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>rs1 is -infinity</td>
+</tr>
+<tr>
+<td>1</td>
+<td>rs1 is a negative normal number</td>
+</tr>
+<tr>
+<td>2</td>
+<td>rs1 is a negative subnormal number</td>
+</tr>
+<tr>
+<td>3</td>
+<td>rs1 is −0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>rs1 is +0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>rs1 is a positive subnormal number</td>
+</tr>
+<tr>
+<td>6</td>
+<td>rs1 is a positive normal number</td>
+</tr>
+<tr>
+<td>7</td>
+<td>rs1 is +infinity</td>
+</tr>
+<tr>
+<td>8</td>
+<td>rs1 is a signaling NaN</td>
+</tr>
+<tr>
+<td>9</td>
+<td>rs1 is a quiet NaN</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
+      
+    
+  </body>
+</html>

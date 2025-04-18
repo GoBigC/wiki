@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://gobigc.github.io/wiki/contributing/">
+        <link rel="canonical" href="https://gobigc.github.io/wiki/4-codeGenerator/riscvModes/">
       
       
-        <link rel="prev" href="../5-errorHandling/errorHandlingNotes/">
+        <link rel="prev" href="../interface/">
       
       
-        <link rel="next" href="../faq/">
+        <link rel="next" href="../registerDefinitions/">
       
       
-      <link rel="icon" href="../assets/favicon.ico">
+      <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
-        <title>Contributing - BigC</title>
+        <title>RV64 Modes - BigC</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,7 +50,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#want-to-contribute-to-bigc" class="md-skip">
+        <a href="#rars-setup" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +90,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="BigC" class="md-header__button md-logo" aria-label="BigC" data-md-component="logo">
+    <a href="../.." title="BigC" class="md-header__button md-logo" aria-label="BigC" data-md-component="logo">
       
-  <img src="../assets/apple-touch-icon.png" alt="logo">
+  <img src="../../assets/apple-touch-icon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Contributing
+              RV64 Modes
             
           </span>
         </div>
@@ -210,7 +210,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href=".." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   About BigC
@@ -245,9 +245,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="BigC" class="md-nav__button md-logo" aria-label="BigC" data-md-component="logo">
+    <a href="../.." title="BigC" class="md-nav__button md-logo" aria-label="BigC" data-md-component="logo">
       
-  <img src="../assets/apple-touch-icon.png" alt="logo">
+  <img src="../../assets/apple-touch-icon.png" alt="logo">
 
     </a>
     BigC
@@ -307,7 +307,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -371,7 +371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-housekeeping/designChoices/" class="md-nav__link">
+      <a href="../../0-housekeeping/designChoices/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -392,7 +392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-housekeeping/techStack/" class="md-nav__link">
+      <a href="../../0-housekeeping/techStack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -413,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-housekeeping/vscodeLanguageSupport/" class="md-nav__link">
+      <a href="../../0-housekeeping/vscodeLanguageSupport/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -485,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-grammar/bible/" class="md-nav__link">
+      <a href="../../1-grammar/bible/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -506,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-grammar/proof/" class="md-nav__link">
+      <a href="../../1-grammar/proof/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -527,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-grammar/sample/" class="md-nav__link">
+      <a href="../../1-grammar/sample/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -599,7 +599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-syntaxAnalyzer/interface/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/interface/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -620,7 +620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-syntaxAnalyzer/sampleAST/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/sampleAST/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -641,7 +641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-syntaxAnalyzer/syntaxAnalyzerWritingNotes/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/syntaxAnalyzerWritingNotes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -713,7 +713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-semanticAnalyzer/interface/" class="md-nav__link">
+      <a href="../../3-semanticAnalyzer/interface/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -734,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-semanticAnalyzer/symbolTable/" class="md-nav__link">
+      <a href="../../3-semanticAnalyzer/symbolTable/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -755,7 +755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-semanticAnalyzer/semanticAnalyzer/" class="md-nav__link">
+      <a href="../../3-semanticAnalyzer/semanticAnalyzer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -781,6 +781,8 @@
                 
   
   
+    
+  
   
   
     
@@ -795,11 +797,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" checked>
         
           
           <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="">
@@ -813,7 +815,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_6">
             <span class="md-nav__icon md-icon"></span>
             Code Generator
@@ -827,7 +829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/interface/" class="md-nav__link">
+      <a href="../interface/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -845,10 +847,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../4-codeGenerator/riscvModes/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    RV64 Modes
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -857,6 +879,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-rv64-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding RV64 modes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modes-relevant-to-bigc-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modes relevant to BigC development
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -869,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/registerDefinitions/" class="md-nav__link">
+      <a href="../registerDefinitions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -890,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/rv64i/" class="md-nav__link">
+      <a href="../rv64i/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -911,7 +971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/rv64m/" class="md-nav__link">
+      <a href="../rv64m/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -932,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/rv64d/" class="md-nav__link">
+      <a href="../rv64d/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1004,7 +1064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-errorHandling/errorHandlingNotes/" class="md-nav__link">
+      <a href="../../5-errorHandling/errorHandlingNotes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1030,19 +1090,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1051,7 +1102,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1064,7 +1114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../faq/" class="md-nav__link">
+      <a href="../../faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1100,8 +1150,50 @@
                   
 
 
-<h1 id="want-to-contribute-to-bigc">Want to contribute to BigC?<a class="headerlink" href="#want-to-contribute-to-bigc" title="Permanent link">&para;</a></h1>
-<p>It's all here, clone, fork, whatever you want! </p>
+<h1 id="rars-setup">RARS setup<a class="headerlink" href="#rars-setup" title="Permanent link">&para;</a></h1>
+<p><strong>tl;dr: Make sure your RARS support these extensions: RV64I, RV64M, RV64D.</strong></p>
+<p>BigC was developed to work with instruction set provided by RARS - the Risc-V Assembler and Runtime Simulator. To install RARS, head to its <a href="https://github.com/TheThirdOne/rars">active repository</a>. </p>
+<p>RISC-V support 32-bit and 64-bit mode. To support floating-point numbers, we are limited to 64-bit mode. From now on, all of our discussions regarding RISC-V only refer to 64-bit mode, which would be abbreviated to "RV64". </p>
+<h2 id="understanding-rv64-modes">Understanding RV64 modes<a class="headerlink" href="#understanding-rv64-modes" title="Permanent link">&para;</a></h2>
+<p>RV64 have several support modules, each called "extension". 
+1. Integer (I): Integer instructions. 
+2. Mumtiplication (M): Integer multiplication/division instructions.<br />
+3. Single-precision floating point (F): Single-precision floating point operations.
+4. Double-precision floating point (D): Double-precision floating point operations. Note that this extension is a superset of RV64F. 
+5. Atomic (A): Atomic memory operations, necessary if support multi-threading, thread synchronization mechanisms (ie. locks). 
+6. Compressed (C): Compressed instructions, necessary to reduce code size for optimization. </p>
+<h2 id="modes-relevant-to-bigc-development">Modes relevant to BigC development<a class="headerlink" href="#modes-relevant-to-bigc-development" title="Permanent link">&para;</a></h2>
+<p>BigC is a simple language, currently in its infancy. Therefore, we do not support advanced functionalities like thread synchronization. For now, we also don't care too much about code optimization. </p>
+<p>So, 2 extensions are not needed: RV64A, RV64C. </p>
+<p>And these are the extensions needed: RV64I, RV64M, RV64D. </p>
+<p>You should check if your instance of RARS has all the necessary extensions. Test if this program can be assembled without any errors: </p>
+<div class="highlight"><pre><span></span><code>.text
+main:
+    # Test RV64I (base 64-bit integer)
+    li t0, 0x123456789ABCDEF0  # 64-bit immediate load
+    addiw t1, t0, 10           # Add immediate, 32-bit result, sign-extend to 64-bit
+
+    # Test RV64M (integer multiplication/division)
+    li t2, 5
+    li t3, 7
+    mul t4, t2, t3             # Basic multiplication
+    mulh t5, t2, t3            # High bits of multiplication
+    div t6, t3, t2             # Division
+
+    # Test RV64D (double-precision floating point)
+    .data
+    double_val: .double 3.14159265358979
+    .text
+    la t0, double_val
+    fld f1, 0(t0)              # Load double
+    fmv.d.x f2, t0             # Move from integer to double
+    fadd.d f3, f1, f2          # Add doubles
+
+    # Exit program
+    li a0, 0
+    li a7, 10
+    ecall
+</code></pre></div>
 
 
 
@@ -1148,10 +1240,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>

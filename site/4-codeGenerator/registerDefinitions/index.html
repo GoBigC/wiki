@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://gobigc.github.io/wiki/contributing/">
+        <link rel="canonical" href="https://gobigc.github.io/wiki/4-codeGenerator/registerDefinitions/">
       
       
-        <link rel="prev" href="../5-errorHandling/errorHandlingNotes/">
+        <link rel="prev" href="../riscvModes/">
       
       
-        <link rel="next" href="../faq/">
+        <link rel="next" href="../rv64i/">
       
       
-      <link rel="icon" href="../assets/favicon.ico">
+      <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
-        <title>Contributing - BigC</title>
+        <title>Register Definitions - BigC</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,7 +50,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#want-to-contribute-to-bigc" class="md-skip">
+        <a href="#register-definitions" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +90,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="BigC" class="md-header__button md-logo" aria-label="BigC" data-md-component="logo">
+    <a href="../.." title="BigC" class="md-header__button md-logo" aria-label="BigC" data-md-component="logo">
       
-  <img src="../assets/apple-touch-icon.png" alt="logo">
+  <img src="../../assets/apple-touch-icon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Contributing
+              Register Definitions
             
           </span>
         </div>
@@ -210,7 +210,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href=".." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   About BigC
@@ -245,9 +245,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="BigC" class="md-nav__button md-logo" aria-label="BigC" data-md-component="logo">
+    <a href="../.." title="BigC" class="md-nav__button md-logo" aria-label="BigC" data-md-component="logo">
       
-  <img src="../assets/apple-touch-icon.png" alt="logo">
+  <img src="../../assets/apple-touch-icon.png" alt="logo">
 
     </a>
     BigC
@@ -307,7 +307,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -371,7 +371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-housekeeping/designChoices/" class="md-nav__link">
+      <a href="../../0-housekeeping/designChoices/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -392,7 +392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-housekeeping/techStack/" class="md-nav__link">
+      <a href="../../0-housekeeping/techStack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -413,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-housekeeping/vscodeLanguageSupport/" class="md-nav__link">
+      <a href="../../0-housekeeping/vscodeLanguageSupport/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -485,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-grammar/bible/" class="md-nav__link">
+      <a href="../../1-grammar/bible/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -506,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-grammar/proof/" class="md-nav__link">
+      <a href="../../1-grammar/proof/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -527,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-grammar/sample/" class="md-nav__link">
+      <a href="../../1-grammar/sample/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -599,7 +599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-syntaxAnalyzer/interface/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/interface/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -620,7 +620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-syntaxAnalyzer/sampleAST/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/sampleAST/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -641,7 +641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-syntaxAnalyzer/syntaxAnalyzerWritingNotes/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/syntaxAnalyzerWritingNotes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -713,7 +713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-semanticAnalyzer/interface/" class="md-nav__link">
+      <a href="../../3-semanticAnalyzer/interface/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -734,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-semanticAnalyzer/symbolTable/" class="md-nav__link">
+      <a href="../../3-semanticAnalyzer/symbolTable/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -755,7 +755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-semanticAnalyzer/semanticAnalyzer/" class="md-nav__link">
+      <a href="../../3-semanticAnalyzer/semanticAnalyzer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -781,6 +781,8 @@
                 
   
   
+    
+  
   
   
     
@@ -795,11 +797,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" checked>
         
           
           <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="">
@@ -813,7 +815,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_6">
             <span class="md-nav__icon md-icon"></span>
             Code Generator
@@ -827,7 +829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/interface/" class="md-nav__link">
+      <a href="../interface/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -848,7 +850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/riscvModes/" class="md-nav__link">
+      <a href="../riscvModes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -866,10 +868,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../4-codeGenerator/registerDefinitions/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Register Definitions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -878,6 +900,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#integer-registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integer Registers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#floating-point-registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Floating Point Registers
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -890,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/rv64i/" class="md-nav__link">
+      <a href="../rv64i/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -911,7 +971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/rv64m/" class="md-nav__link">
+      <a href="../rv64m/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -932,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/rv64d/" class="md-nav__link">
+      <a href="../rv64d/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1004,7 +1064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-errorHandling/errorHandlingNotes/" class="md-nav__link">
+      <a href="../../5-errorHandling/errorHandlingNotes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1030,19 +1090,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1051,7 +1102,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1064,7 +1114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../faq/" class="md-nav__link">
+      <a href="../../faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1100,8 +1150,418 @@
                   
 
 
-<h1 id="want-to-contribute-to-bigc">Want to contribute to BigC?<a class="headerlink" href="#want-to-contribute-to-bigc" title="Permanent link">&para;</a></h1>
-<p>It's all here, clone, fork, whatever you want! </p>
+<h1 id="register-definitions">Register Definitions<a class="headerlink" href="#register-definitions" title="Permanent link">&para;</a></h1>
+<p>Copied from <a href="https://msyksphinz-self.github.io/riscv-isadoc/html/regs.html">https://msyksphinz-self.github.io/riscv-isadoc/html/regs.html</a></p>
+<h2 id="integer-registers">Integer Registers<a class="headerlink" href="#integer-registers" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Register</th>
+<th>ABI Name</th>
+<th>Description</th>
+<th>Saver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x0</td>
+<td>zero</td>
+<td>Hard-wired zero</td>
+<td></td>
+</tr>
+<tr>
+<td>x1</td>
+<td>ra</td>
+<td>Return address</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x2</td>
+<td>sp</td>
+<td>Stack pointer</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x3</td>
+<td>gp</td>
+<td>Global pointer</td>
+<td></td>
+</tr>
+<tr>
+<td>x4</td>
+<td>tp</td>
+<td>Thread pointer</td>
+<td></td>
+</tr>
+<tr>
+<td>x5</td>
+<td>t0</td>
+<td>Temporary/alternate link register</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x6</td>
+<td>t1</td>
+<td>Temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x7</td>
+<td>t2</td>
+<td>Temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x8</td>
+<td>s0/fp</td>
+<td>Saved register/frame pointer</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x9</td>
+<td>s1</td>
+<td>Saved register</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x10</td>
+<td>a0</td>
+<td>Function arguments/return values</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x11</td>
+<td>a1</td>
+<td>Function arguments/return values</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x12</td>
+<td>a2</td>
+<td>Function arguments</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x13</td>
+<td>a3</td>
+<td>Function arguments</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x14</td>
+<td>a4</td>
+<td>Function arguments</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x15</td>
+<td>a5</td>
+<td>Function arguments</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x16</td>
+<td>a6</td>
+<td>Function arguments</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x17</td>
+<td>a7</td>
+<td>Function arguments</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x18</td>
+<td>s2</td>
+<td>Saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x19</td>
+<td>s3</td>
+<td>Saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x20</td>
+<td>s4</td>
+<td>Saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x21</td>
+<td>s5</td>
+<td>Saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x22</td>
+<td>s6</td>
+<td>Saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x23</td>
+<td>s7</td>
+<td>Saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x24</td>
+<td>s8</td>
+<td>Saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x25</td>
+<td>s9</td>
+<td>Saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x26</td>
+<td>s10</td>
+<td>Saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x27</td>
+<td>s11</td>
+<td>Saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x28</td>
+<td>t3</td>
+<td>Temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x29</td>
+<td>t4</td>
+<td>Temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x30</td>
+<td>t5</td>
+<td>Temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x31</td>
+<td>t6</td>
+<td>Temporaries</td>
+<td>Caller</td>
+</tr>
+</tbody>
+</table>
+<h2 id="floating-point-registers">Floating Point Registers<a class="headerlink" href="#floating-point-registers" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Register</th>
+<th>ABI Name</th>
+<th>Description</th>
+<th>Saver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f0</td>
+<td>ft0</td>
+<td>FP temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f1</td>
+<td>ft1</td>
+<td>FP temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f2</td>
+<td>ft2</td>
+<td>FP temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f3</td>
+<td>ft3</td>
+<td>FP temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f4</td>
+<td>ft4</td>
+<td>FP temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f5</td>
+<td>ft5</td>
+<td>FP temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f6</td>
+<td>ft6</td>
+<td>FP temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f7</td>
+<td>ft7</td>
+<td>FP temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f8</td>
+<td>fs0</td>
+<td>FP saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>f9</td>
+<td>fs1</td>
+<td>FP saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>f10</td>
+<td>fa0</td>
+<td>FP arguments/return values</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f11</td>
+<td>fa1</td>
+<td>FP arguments/return values</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f12</td>
+<td>fa2</td>
+<td>FP arguments</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f13</td>
+<td>fa3</td>
+<td>FP arguments</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f14</td>
+<td>fa4</td>
+<td>FP arguments</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f15</td>
+<td>fa5</td>
+<td>FP arguments</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f16</td>
+<td>fa6</td>
+<td>FP arguments</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f17</td>
+<td>fa7</td>
+<td>FP arguments</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f18</td>
+<td>fs2</td>
+<td>FP saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>f19</td>
+<td>fs3</td>
+<td>FP saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>f20</td>
+<td>fs4</td>
+<td>FP saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>f21</td>
+<td>fs5</td>
+<td>FP saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>f22</td>
+<td>fs6</td>
+<td>FP saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>f23</td>
+<td>fs7</td>
+<td>FP saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>f24</td>
+<td>fs8</td>
+<td>FP saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>f25</td>
+<td>fs9</td>
+<td>FP saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>f26</td>
+<td>fs10</td>
+<td>FP saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>f27</td>
+<td>fs11</td>
+<td>FP saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>f28</td>
+<td>ft8</td>
+<td>FP temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f29</td>
+<td>ft9</td>
+<td>FP temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f30</td>
+<td>ft10</td>
+<td>FP temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f31</td>
+<td>ft11</td>
+<td>FP temporaries</td>
+<td>Caller</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1148,10 +1608,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>

@@ -46,14 +46,19 @@ nav:
           - Sample: 1-grammar/sample.md
       - Syntax Analyzer:
           - Interface: 2-syntaxAnalyzer/interface.md
-          - Sample AST: 2-syntaxAnalyzer/sample-ast-tree.md
+          - Sample AST: 2-syntaxAnalyzer/sampleAST.md
           - Notes: 2-syntaxAnalyzer/syntaxAnalyzerWritingNotes.md
       - Semantic Analyzer:
           - Interface: 3-semanticAnalyzer/interface.md
-          - Symbol Table Structure: 3-semanticAnalyzer/symbol-table.md
-          - Semantic Analyzer: 3-semanticAnalyzer/semantic-analyzer.md
+          - Symbol Table Structure: 3-semanticAnalyzer/symbolTable.md
+          - Semantic Analyzer: 3-semanticAnalyzer/semanticAnalyzer.md
       - Code Generator:
           - Interface: 4-codeGenerator/interface.md
+          - RV64 Modes: 4-codeGenerator/riscvModes.md
+          - Register Definitions: 4-codeGenerator/registerDefinitions.md
+          - RV64I instructions: 4-codeGenerator/rv64i.md
+          - RV64M instructions: 4-codeGenerator/rv64m.md
+          - RV64D instructions: 4-codeGenerator/rv64d.md
       - Error Handling:
           - Notes: 5-errorHandling/errorHandlingNotes.md
       - Contributing: contributing.md

@@ -1,0 +1,2470 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="BigC Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://gobigc.github.io/wiki/4-codeGenerator/rv64i/">
+      
+      
+        <link rel="prev" href="../registerDefinitions/">
+      
+      
+        <link rel="next" href="../rv64m/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+    
+    
+      
+        <title>RV64I instructions - BigC</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#risc-v-rv64i-instruction-set" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BigC" class="md-header__button md-logo" aria-label="BigC" data-md-component="logo">
+      
+  <img src="../../assets/apple-touch-icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BigC
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RV64I instructions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  About BigC
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BigC" class="md-nav__button md-logo" aria-label="BigC" data-md-component="logo">
+      
+  <img src="../../assets/apple-touch-icon.png" alt="logo">
+
+    </a>
+    BigC
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    About BigC
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            About BigC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About BigC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0-housekeeping/designChoices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Choices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0-housekeeping/techStack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech Stack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0-housekeeping/vscodeLanguageSupport/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Language Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Grammar
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Grammar
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-grammar/bible/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bible
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-grammar/proof/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Proof
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-grammar/sample/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Syntax Analyzer
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Syntax Analyzer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-syntaxAnalyzer/interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-syntaxAnalyzer/sampleAST/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample AST
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-syntaxAnalyzer/syntaxAnalyzerWritingNotes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Semantic Analyzer
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Semantic Analyzer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-semanticAnalyzer/interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-semanticAnalyzer/symbolTable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Symbol Table Structure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-semanticAnalyzer/semanticAnalyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semantic Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Code Generator
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Code Generator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../riscvModes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RV64 Modes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../registerDefinitions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Register Definitions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    RV64I instructions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    RV64I instructions
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#addiw" class="md-nav__link">
+    <span class="md-ellipsis">
+      addiw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slliw" class="md-nav__link">
+    <span class="md-ellipsis">
+      slliw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#srliw" class="md-nav__link">
+    <span class="md-ellipsis">
+      srliw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sraiw" class="md-nav__link">
+    <span class="md-ellipsis">
+      sraiw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#addw" class="md-nav__link">
+    <span class="md-ellipsis">
+      addw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subw" class="md-nav__link">
+    <span class="md-ellipsis">
+      subw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sllw" class="md-nav__link">
+    <span class="md-ellipsis">
+      sllw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#srlw" class="md-nav__link">
+    <span class="md-ellipsis">
+      srlw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sraw" class="md-nav__link">
+    <span class="md-ellipsis">
+      sraw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lwu" class="md-nav__link">
+    <span class="md-ellipsis">
+      lwu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ld" class="md-nav__link">
+    <span class="md-ellipsis">
+      ld
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sd" class="md-nav__link">
+    <span class="md-ellipsis">
+      sd
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lui" class="md-nav__link">
+    <span class="md-ellipsis">
+      lui
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auipc" class="md-nav__link">
+    <span class="md-ellipsis">
+      auipc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#addi" class="md-nav__link">
+    <span class="md-ellipsis">
+      addi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slti" class="md-nav__link">
+    <span class="md-ellipsis">
+      slti
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sltiu" class="md-nav__link">
+    <span class="md-ellipsis">
+      sltiu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xori" class="md-nav__link">
+    <span class="md-ellipsis">
+      xori
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ori" class="md-nav__link">
+    <span class="md-ellipsis">
+      ori
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#andi" class="md-nav__link">
+    <span class="md-ellipsis">
+      andi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slli" class="md-nav__link">
+    <span class="md-ellipsis">
+      slli
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#srli" class="md-nav__link">
+    <span class="md-ellipsis">
+      srli
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#srai" class="md-nav__link">
+    <span class="md-ellipsis">
+      srai
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add" class="md-nav__link">
+    <span class="md-ellipsis">
+      add
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sub" class="md-nav__link">
+    <span class="md-ellipsis">
+      sub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sll" class="md-nav__link">
+    <span class="md-ellipsis">
+      sll
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slt" class="md-nav__link">
+    <span class="md-ellipsis">
+      slt
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sltu" class="md-nav__link">
+    <span class="md-ellipsis">
+      sltu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xor" class="md-nav__link">
+    <span class="md-ellipsis">
+      xor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#srl" class="md-nav__link">
+    <span class="md-ellipsis">
+      srl
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sra" class="md-nav__link">
+    <span class="md-ellipsis">
+      sra
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    <span class="md-ellipsis">
+      or
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#and" class="md-nav__link">
+    <span class="md-ellipsis">
+      and
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fence" class="md-nav__link">
+    <span class="md-ellipsis">
+      fence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fencei" class="md-nav__link">
+    <span class="md-ellipsis">
+      fence.i
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csrrw" class="md-nav__link">
+    <span class="md-ellipsis">
+      csrrw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csrrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      csrrs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csrrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      csrrc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csrrwi" class="md-nav__link">
+    <span class="md-ellipsis">
+      csrrwi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csrrsi" class="md-nav__link">
+    <span class="md-ellipsis">
+      csrrsi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csrrci" class="md-nav__link">
+    <span class="md-ellipsis">
+      csrrci
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecall" class="md-nav__link">
+    <span class="md-ellipsis">
+      ecall
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ebreak" class="md-nav__link">
+    <span class="md-ellipsis">
+      ebreak
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uret" class="md-nav__link">
+    <span class="md-ellipsis">
+      uret
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sret" class="md-nav__link">
+    <span class="md-ellipsis">
+      sret
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mret" class="md-nav__link">
+    <span class="md-ellipsis">
+      mret
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wfi" class="md-nav__link">
+    <span class="md-ellipsis">
+      wfi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sfencevma" class="md-nav__link">
+    <span class="md-ellipsis">
+      sfence.vma
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lb" class="md-nav__link">
+    <span class="md-ellipsis">
+      lb
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lh" class="md-nav__link">
+    <span class="md-ellipsis">
+      lh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lw" class="md-nav__link">
+    <span class="md-ellipsis">
+      lw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lbu" class="md-nav__link">
+    <span class="md-ellipsis">
+      lbu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lhu" class="md-nav__link">
+    <span class="md-ellipsis">
+      lhu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sb" class="md-nav__link">
+    <span class="md-ellipsis">
+      sb
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sh" class="md-nav__link">
+    <span class="md-ellipsis">
+      sh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sw" class="md-nav__link">
+    <span class="md-ellipsis">
+      sw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jal" class="md-nav__link">
+    <span class="md-ellipsis">
+      jal
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jalr" class="md-nav__link">
+    <span class="md-ellipsis">
+      jalr
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beq" class="md-nav__link">
+    <span class="md-ellipsis">
+      beq
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bne" class="md-nav__link">
+    <span class="md-ellipsis">
+      bne
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blt" class="md-nav__link">
+    <span class="md-ellipsis">
+      blt
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bge" class="md-nav__link">
+    <span class="md-ellipsis">
+      bge
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bltu" class="md-nav__link">
+    <span class="md-ellipsis">
+      bltu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bgeu" class="md-nav__link">
+    <span class="md-ellipsis">
+      bgeu
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rv64m/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RV64M instructions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rv64d/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RV64D instructions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Error Handling
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Error Handling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-errorHandling/errorHandlingNotes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="risc-v-rv64i-instruction-set">RISC-V RV64I Instruction Set<a class="headerlink" href="#risc-v-rv64i-instruction-set" title="Permanent link">&para;</a></h1>
+<p>Copied from <a href="https://msyksphinz-self.github.io/riscv-isadoc/html/rvi.html">https://msyksphinz-self.github.io/riscv-isadoc/html/rvi.html</a> and <a href="https://msyksphinz-self.github.io/riscv-isadoc/html/rv64i.html">https://msyksphinz-self.github.io/riscv-isadoc/html/rv64i.html</a>.</p>
+<h2 id="addiw">addiw<a class="headerlink" href="#addiw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>addiw rd,rs1,imm</code></p>
+<p><strong>Description:</strong> Adds the sign-extended 12-bit immediate to register rs1 and produces the proper sign-extension of a 32-bit result in rd. Overflows are ignored and the result is the low 32 bits of the result sign-extended to 64 bits. Note, ADDIW rd, rs1, 0 writes the sign-extension of the lower 32 bits of register rs1 into register rd (assembler pseudoinstruction SEXT.W).</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext((x[rs1] + sext(immediate))[31:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|imm[11:0]        |rs1  |000  |rd   |00110|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="slliw">slliw<a class="headerlink" href="#slliw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>slliw rd,rs1,shamt</code></p>
+<p><strong>Description:</strong> Performs logical left shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate. Encodings with imm[5] ≠ 0 are reserved.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext((x[rs1] &lt;&lt; shamt)[31:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |shamt|rs1  |001  |rd   |00110|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="srliw">srliw<a class="headerlink" href="#srliw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>srliw rd,rs1,shamt</code></p>
+<p><strong>Description:</strong> Performs logical right shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate. Encodings with imm[5] ≠ 0 are reserved.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext(x[rs1][31:0] &gt;&gt;u shamt)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |shamt|rs1  |101  |rd   |00110|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="sraiw">sraiw<a class="headerlink" href="#sraiw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>sraiw rd,rs1,shamt</code></p>
+<p><strong>Description:</strong> Performs arithmetic right shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate. Encodings with imm[5] ≠ 0 are reserved.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext(x[rs1][31:0] &gt;&gt;s shamt)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|01000|00   |shamt|rs1  |101  |rd   |00110|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="addw">addw<a class="headerlink" href="#addw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>addw rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Adds the 32-bit of registers rs1 and 32-bit of register rs2 and stores the result in rd. Arithmetic overflow is ignored and the low 32-bits of the result is sign-extended to 64-bits and written to the destination register.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext((x[rs1] + x[rs2])[31:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |rs2  |rs1  |000  |rd   |01110|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="subw">subw<a class="headerlink" href="#subw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>subw rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Subtract the 32-bit of registers rs1 and 32-bit of register rs2 and stores the result in rd. Arithmetic overflow is ignored and the low 32-bits of the result is sign-extended to 64-bits and written to the destination register.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext((x[rs1] - x[rs2])[31:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|01000|00   |rs2  |rs1  |000  |rd   |01110|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="sllw">sllw<a class="headerlink" href="#sllw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>sllw rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs logical left shift on the low 32-bits value in register rs1 by the shift amount held in the lower 5 bits of register rs2 and produce 32-bit results and written to the destination register rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext((x[rs1] &lt;&lt; x[rs2][4:0])[31:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |rs2  |rs1  |001  |rd   |01110|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="srlw">srlw<a class="headerlink" href="#srlw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>srlw rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs logical right shift on the low 32-bits value in register rs1 by the shift amount held in the lower 5 bits of register rs2 and produce 32-bit results and written to the destination register rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext(x[rs1][31:0] &gt;&gt;u x[rs2][4:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |rs2  |rs1  |101  |rd   |01110|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="sraw">sraw<a class="headerlink" href="#sraw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>sraw rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs arithmetic right shift on the low 32-bits value in register rs1 by the shift amount held in the lower 5 bits of register rs2 and produce 32-bit results and written to the destination register rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext(x[rs1][31:0] &gt;&gt;s x[rs2][4:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|01000|00   |rs2  |rs1  |101  |rd   |01110|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="lwu">lwu<a class="headerlink" href="#lwu" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>lwu rd,offset(rs1)</code></p>
+<p><strong>Description:</strong> Loads a 32-bit value from memory and zero-extends this to 64 bits before storing it in register rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = M[x[rs1] + sext(offset)][31:0]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|offset[11:0]     |rs1  |110  |rd   |00000|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="ld">ld<a class="headerlink" href="#ld" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>ld rd,offset(rs1)</code></p>
+<p><strong>Description:</strong> Loads a 64-bit value from memory into register rd for RV64I.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = M[x[rs1] + sext(offset)][63:0]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|offset[11:0]     |rs1  |011  |rd   |00000|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="sd">sd<a class="headerlink" href="#sd" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>sd rs2,offset(rs1)</code></p>
+<p><strong>Description:</strong> Store 64-bit, values from register rs2 to memory.</p>
+<p><strong>Implementation:</strong> <code>M[x[rs1] + sext(offset)] = x[rs2][63:0]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+------+-----+-----+-----+-----------+-----+---+
+|31-27|26-25 |24-20|19-15|14-12|11-7       |6-2  |1-0|
++-----+------+-----+-----+-----+-----------+-----+---+
+|offset[11:5]|rs2  |rs1  |011  |offset[4:0]|01000|11 |
++-----+------+-----+-----+-----+-----------+-----+---+
+</code></pre></div></p>
+<h2 id="lui">lui<a class="headerlink" href="#lui" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>lui rd,imm</code></p>
+<p><strong>Description:</strong> Build 32-bit constants and uses the U-type format. LUI places the U-immediate value in the top 20 bits of the destination register rd, filling in the lowest 12 bits with zeros.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext(immediate[31:12] &lt;&lt; 12)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|imm[31:12]                   |rd   |01101|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="auipc">auipc<a class="headerlink" href="#auipc" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>auipc rd,imm</code></p>
+<p><strong>Description:</strong> Build pc-relative addresses and uses the U-type format. AUIPC forms a 32-bit offset from the 20-bit U-immediate, filling in the lowest 12 bits with zeros, adds this offset to the pc, then places the result in register rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = pc + sext(immediate[31:12] &lt;&lt; 12)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|imm[31:12]                   |rd   |00101|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="addi">addi<a class="headerlink" href="#addi" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>addi rd,rs1,imm</code></p>
+<p><strong>Description:</strong> Adds the sign-extended 12-bit immediate to register rs1. Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result. ADDI rd, rs1, 0 is used to implement the MV rd, rs1 assembler pseudo-instruction.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] + sext(immediate)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|imm[11:0]        |rs1  |000  |rd   |00100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="slti">slti<a class="headerlink" href="#slti" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>slti rd,rs1,imm</code></p>
+<p><strong>Description:</strong> Place the value 1 in register rd if register rs1 is less than the signextended immediate when both are treated as signed numbers, else 0 is written to rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] &lt;s sext(immediate)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|imm[11:0]        |rs1  |010  |rd   |00100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="sltiu">sltiu<a class="headerlink" href="#sltiu" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>sltiu rd,rs1,imm</code></p>
+<p><strong>Description:</strong> Place the value 1 in register rd if register rs1 is less than the immediate when both are treated as unsigned numbers, else 0 is written to rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] &lt;u sext(immediate)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|imm[11:0]        |rs1  |011  |rd   |00100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="xori">xori<a class="headerlink" href="#xori" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>xori rd,rs1,imm</code></p>
+<p><strong>Description:</strong> Performs bitwise XOR on register rs1 and the sign-extended 12-bit immediate and place the result in rd. Note, "XORI rd, rs1, -1" performs a bitwise logical inversion of register rs1(assembler pseudo-instruction NOT rd, rs)</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] ^ sext(immediate)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|imm[11:0]        |rs1  |100  |rd   |00100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="ori">ori<a class="headerlink" href="#ori" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>ori rd,rs1,imm</code></p>
+<p><strong>Description:</strong> Performs bitwise OR on register rs1 and the sign-extended 12-bit immediate and place the result in rd</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] | sext(immediate)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|imm[11:0]        |rs1  |110  |rd   |00100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="andi">andi<a class="headerlink" href="#andi" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>andi rd,rs1,imm</code></p>
+<p><strong>Description:</strong> Performs bitwise AND on register rs1 and the sign-extended 12-bit immediate and place the result in rd</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] &amp; sext(immediate)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|imm[11:0]        |rs1  |111  |rd   |00100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="slli">slli<a class="headerlink" href="#slli" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>slli rd,rs1,shamt</code></p>
+<p><strong>Description:</strong> Performs logical left shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate. In RV64, bit-25 is used to shamt[5].</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] &lt;&lt; shamt</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|0X   |shamt|rs1  |001  |rd   |00100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="srli">srli<a class="headerlink" href="#srli" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>srli rd,rs1,shamt</code></p>
+<p><strong>Description:</strong> Performs logical right shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate. In RV64, bit-25 is used to shamt[5].</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] &gt;&gt;u shamt</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|0X   |shamt|rs1  |101  |rd   |00100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="srai">srai<a class="headerlink" href="#srai" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>srai rd,rs1,shamt</code></p>
+<p><strong>Description:</strong> Performs arithmetic right shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate. In RV64, bit-25 is used to shamt[5].</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] &gt;&gt;s shamt</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|01000|0X   |shamt|rs1  |101  |rd   |00100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="add">add<a class="headerlink" href="#add" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>add rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Adds the registers rs1 and rs2 and stores the result in rd. Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] + x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |rs2  |rs1  |000  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="sub">sub<a class="headerlink" href="#sub" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>sub rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Subs the register rs2 from rs1 and stores the result in rd. Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] - x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|01000|00   |rs2  |rs1  |000  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="sll">sll<a class="headerlink" href="#sll" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>sll rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs logical left shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] &lt;&lt; x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |rs2  |rs1  |001  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="slt">slt<a class="headerlink" href="#slt" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>slt rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Place the value 1 in register rd if register rs1 is less than register rs2 when both are treated as signed numbers, else 0 is written to rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] &lt;s x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |rs2  |rs1  |010  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="sltu">sltu<a class="headerlink" href="#sltu" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>sltu rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Place the value 1 in register rd if register rs1 is less than register rs2 when both are treated as unsigned numbers, else 0 is written to rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] &lt;u x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |rs2  |rs1  |011  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="xor">xor<a class="headerlink" href="#xor" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>xor rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs bitwise XOR on registers rs1 and rs2 and place the result in rd</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] ^ x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |rs2  |rs1  |100  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="srl">srl<a class="headerlink" href="#srl" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>srl rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Logical right shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] &gt;&gt;u x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |rs2  |rs1  |101  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="sra">sra<a class="headerlink" href="#sra" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>sra rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs arithmetic right shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] &gt;&gt;s x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|01000|00   |rs2  |rs1  |101  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="or">or<a class="headerlink" href="#or" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>or rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs bitwise OR on registers rs1 and rs2 and place the result in rd</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] | x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |rs2  |rs1  |110  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="and">and<a class="headerlink" href="#and" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>and rd,rs1,rs2</code></p>
+<p><strong>Description:</strong> Performs bitwise AND on registers rs1 and rs2 and place the result in rd</p>
+<p><strong>Implementation:</strong> <code>x[rd] = x[rs1] &amp; x[rs2]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |rs2  |rs1  |111  |rd   |01100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fence">fence<a class="headerlink" href="#fence" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fence pred, succ</code></p>
+<p><strong>Description:</strong> Used to order device I/O and memory accesses as viewed by other RISC-V harts and external devices or coprocessors. Any combination of device input (I), device output (O), memory reads (R), and memory writes (W) may be ordered with respect to any combination of the same. Informally, no other RISC-V hart or external device can observe any operation in the successor set following a FENCE before any operation in the predecessor set preceding the FENCE.</p>
+<p><strong>Implementation:</strong> <code>Fence(pred, succ)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-28|27-24|23-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|0000 |pred |succ |00000|000  |00000|00011|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="fencei">fence.i<a class="headerlink" href="#fencei" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>fence.i</code></p>
+<p><strong>Description:</strong> Provides explicit synchronization between writes to instruction memory and instruction fetches on the same hart.</p>
+<p><strong>Implementation:</strong> <code>Fence(Store, Fetch)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |00000|00000|001  |00000|00011|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="csrrw">csrrw<a class="headerlink" href="#csrrw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>csrrw rd,offset,rs1</code></p>
+<p><strong>Description:</strong> Atomically swaps values in the CSRs and integer registers. CSRRW reads the old value of the CSR, zero-extends the value to XLEN bits, then writes it to integer register rd. The initial value in rs1 is written to the CSR. If rd=x0, then the instruction shall not read the CSR and shall not cause any of the side effects that might occur on a CSR read.</p>
+<p><strong>Implementation:</strong> <code>t = CSRs[csr]; CSRs[csr] = x[rs1]; x[rd] = t</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|csr              |rs1  |001  |rd   |11100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="csrrs">csrrs<a class="headerlink" href="#csrrs" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>csrrs rd,offset,rs1</code></p>
+<p><strong>Description:</strong> Reads the value of the CSR, zero-extends the value to XLEN bits, and writes it to integer register rd. The initial value in integer register rs1 is treated as a bit mask that specifies bit positions to be set in the CSR. Any bit that is high in rs1 will cause the corresponding bit to be set in the CSR, if that CSR bit is writable. Other bits in the CSR are unaffected (though CSRs might have side effects when written).</p>
+<p><strong>Implementation:</strong> <code>t = CSRs[csr]; CSRs[csr] = t | x[rs1]; x[rd] = t</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|csr              |rs1  |010  |rd   |11100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="csrrc">csrrc<a class="headerlink" href="#csrrc" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>csrrc rd,offset,rs1</code></p>
+<p><strong>Description:</strong> Reads the value of the CSR, zero-extends the value to XLEN bits, and writes it to integer register rd. The initial value in integer register rs1 is treated as a bit mask that specifies bit positions to be cleared in the CSR. Any bit that is high in rs1 will cause the corresponding bit to be cleared in the CSR, if that CSR bit is writable. Other bits in the CSR are unaffected.</p>
+<p><strong>Implementation:</strong> <code>t = CSRs[csr]; CSRs[csr] = t &amp;∼x[rs1]; x[rd] = t</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|csr              |rs1  |011  |rd   |11100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="csrrwi">csrrwi<a class="headerlink" href="#csrrwi" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>csrrwi rd,offset,uimm</code></p>
+<p><strong>Description:</strong> Update the CSR using an XLEN-bit value obtained by zero-extending a 5-bit unsigned immediate (uimm[4:0]) field encoded in the rs1 field.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = CSRs[csr]; CSRs[csr] = zimm</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|csr              |uimm |101  |rd   |11100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="csrrsi">csrrsi<a class="headerlink" href="#csrrsi" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>csrrsi rd,offset,uimm</code></p>
+<p><strong>Description:</strong> Set CSR bit using an XLEN-bit value obtained by zero-extending a 5-bit unsigned immediate (uimm[4:0]) field encoded in the rs1 field.</p>
+<p><strong>Implementation:</strong> <code>t = CSRs[csr]; CSRs[csr] = t | zimm; x[rd] = t</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|csr              |uimm |110  |rd   |11100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="csrrci">csrrci<a class="headerlink" href="#csrrci" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>csrrci rd,offset,uimm</code></p>
+<p><strong>Description:</strong> Clear CSR bit using an XLEN-bit value obtained by zero-extending a 5-bit unsigned immediate (uimm[4:0]) field encoded in the rs1 field.</p>
+<p><strong>Implementation:</strong> <code>t = CSRs[csr]; CSRs[csr] = t &amp;∼zimm; x[rd] = t</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|csr              |rs1  |111  |rd   |11100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="ecall">ecall<a class="headerlink" href="#ecall" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>ecall</code></p>
+<p><strong>Description:</strong> Make a request to the supporting execution environment. When executed in U-mode, S-mode, or M-mode, it generates an environment-call-from-U-mode exception, environment-call-from-S-mode exception, or environment-call-from-M-mode exception, respectively, and performs no other operation.</p>
+<p><strong>Implementation:</strong> <code>RaiseException(EnvironmentCall)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |00000|00000|000  |00000|11100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="ebreak">ebreak<a class="headerlink" href="#ebreak" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>ebreak</code></p>
+<p><strong>Description:</strong> Used by debuggers to cause control to be transferred back to a debugging environment. It generates a breakpoint exception and performs no other operation.</p>
+<p><strong>Implementation:</strong> <code>RaiseException(Breakpoint)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |00001|00000|000  |00000|11100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="uret">uret<a class="headerlink" href="#uret" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>uret</code></p>
+<p><strong>Description:</strong> Return from traps in U-mode, and URET copies UPIE into UIE, then sets UPIE.</p>
+<p><strong>Implementation:</strong> <code>ExceptionReturn(User)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00000|00   |00010|00000|000  |00000|11100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="sret">sret<a class="headerlink" href="#sret" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>sret</code></p>
+<p><strong>Description:</strong> Return from traps in S-mode, and SRET copies SPIE into SIE, then sets SPIE.</p>
+<p><strong>Implementation:</strong> <code>ExceptionReturn(User)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00010|00   |00010|00000|000  |00000|11100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="mret">mret<a class="headerlink" href="#mret" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>mret</code></p>
+<p><strong>Description:</strong> Return from traps in M-mode, and MRET copies MPIE into MIE, then sets MPIE.</p>
+<p><strong>Implementation:</strong> <code>ExceptionReturn(Machine)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00110|00   |00010|00000|000  |00000|11100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="wfi">wfi<a class="headerlink" href="#wfi" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>wfi</code></p>
+<p><strong>Description:</strong> Provides a hint to the implementation that the current hart can be stalled until an interrupt might need servicing. Execution of the WFI instruction can also be used to inform the hardware platform that suitable interrupts should preferentially be routed to this hart. WFI is available in all privileged modes, and optionally available to U-mode. This instruction may raise an illegal instruction exception when TW=1 in mstatus.</p>
+<p><strong>Implementation:</strong> <code>while (noInterruptsPending) idle</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00010|00   |00101|00000|000  |00000|11100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="sfencevma">sfence.vma<a class="headerlink" href="#sfencevma" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>sfence.vma rs1,rs2</code></p>
+<p><strong>Description:</strong> Guarantees that any previous stores already visible to the current RISC-V hart are ordered before all subsequent implicit references from that hart to the memory-management data structures. The SFENCE.VMA is used to flush any local hardware caches related to address translation. It is specified as a fence rather than a TLB flush to provide cleaner semantics with respect to which instructions are affected by the flush operation and to support a wider variety of dynamic caching structures and memory-management schemes. SFENCE.VMA is also used by higher privilege levels to synchronize page table writes and the address translation hardware.</p>
+<p><strong>Implementation:</strong> <code>Fence(Store, AddressTranslation)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|00010|01   |rs2  |rs1  |000  |rd   |11100|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="lb">lb<a class="headerlink" href="#lb" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>lb rd,offset(rs1)</code></p>
+<p><strong>Description:</strong> Loads a 8-bit value from memory and sign-extends this to XLEN bits before storing it in register rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext(M[x[rs1] + sext(offset)][7:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|offset[11:0]     |rs1  |000  |rd   |00000|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="lh">lh<a class="headerlink" href="#lh" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>lh rd,offset(rs1)</code></p>
+<p><strong>Description:</strong> Loads a 16-bit value from memory and sign-extends this to XLEN bits before storing it in register rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext(M[x[rs1] + sext(offset)][15:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|offset[11:0]     |rs1  |001  |rd   |00000|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="lw">lw<a class="headerlink" href="#lw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>lw rd,offset(rs1)</code></p>
+<p><strong>Description:</strong> Loads a 32-bit value from memory and sign-extends this to XLEN bits before storing it in register rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = sext(M[x[rs1] + sext(offset)][31:0])</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|offset[11:0]     |rs1  |010  |rd   |00000|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="lbu">lbu<a class="headerlink" href="#lbu" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>lbu rd,offset(rs1)</code></p>
+<p><strong>Description:</strong> Loads a 8-bit value from memory and zero-extends this to XLEN bits before storing it in register rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = M[x[rs1] + sext(offset)][7:0]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|offset[11:0]     |rs1  |100  |rd   |00000|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="lhu">lhu<a class="headerlink" href="#lhu" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>lhu rd,offset(rs1)</code></p>
+<p><strong>Description:</strong> Loads a 16-bit value from memory and zero-extends this to XLEN bits before storing it in register rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = M[x[rs1] + sext(offset)][15:0]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|offset[11:0]     |rs1  |101  |rd   |00000|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="sb">sb<a class="headerlink" href="#sb" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>sb rs2,offset(rs1)</code></p>
+<p><strong>Description:</strong> Store 8-bit, values from the low bits of register rs2 to memory.</p>
+<p><strong>Implementation:</strong> <code>M[x[rs1] + sext(offset)] = x[rs2][7:0]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+------+-----+-----+-----+-----------+-----+---+
+|31-27|26-25 |24-20|19-15|14-12|11-7       |6-2  |1-0|
++-----+------+-----+-----+-----+-----------+-----+---+
+|offset[11:5]|rs2  |rs1  |000  |offset[4:0]|01000|11 |
++-----+------+-----+-----+-----+-----------+-----+---+
+</code></pre></div></p>
+<h2 id="sh">sh<a class="headerlink" href="#sh" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>sh rs2,offset(rs1)</code></p>
+<p><strong>Description:</strong> Store 16-bit, values from the low bits of register rs2 to memory.</p>
+<p><strong>Implementation:</strong> <code>M[x[rs1] + sext(offset)] = x[rs2][15:0]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+------+-----+-----+-----+-----------+-----+---+
+|31-27|26-25 |24-20|19-15|14-12|11-7       |6-2  |1-0|
++-----+------+-----+-----+-----+-----------+-----+---+
+|offset[11:5]|rs2  |rs1  |001  |offset[4:0]|01000|11 |
++-----+------+-----+-----+-----+-----------+-----+---+
+</code></pre></div></p>
+<h2 id="sw">sw<a class="headerlink" href="#sw" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>sw rs2,offset(rs1)</code></p>
+<p><strong>Description:</strong> Store 32-bit, values from the low bits of register rs2 to memory.</p>
+<p><strong>Implementation:</strong> <code>M[x[rs1] + sext(offset)] = x[rs2][31:0]</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+------+-----+-----+-----+-----------+-----+---+
+|31-27|26-25 |24-20|19-15|14-12|11-7       |6-2  |1-0|
++-----+------+-----+-----+-----+-----------+-----+---+
+|offset[11:5]|rs2  |rs1  |010  |offset[4:0]|01000|11 |
++-----+------+-----+-----+-----+-----------+-----+---+
+</code></pre></div></p>
+<h2 id="jal">jal<a class="headerlink" href="#jal" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>jal rd,offset</code></p>
+<p><strong>Description:</strong> Jump to address and place return address in rd.</p>
+<p><strong>Implementation:</strong> <code>x[rd] = pc+4; pc += sext(offset)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|offset[20|10:1|11|19:12]     |rd   |11011|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="jalr">jalr<a class="headerlink" href="#jalr" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>jalr rd,rs1,offset</code></p>
+<p><strong>Description:</strong> Jump to address and place return address in rd.</p>
+<p><strong>Implementation:</strong> <code>t =pc+4; pc=(x[rs1]+sext(offset))&amp;∼1; x[rd]=t</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+-----+---+
+|31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
++-----+-----+-----+-----+-----+-----+-----+---+
+|offset[11:0]     |rs1  |000  |rd   |11001|11 |
++-----+-----+-----+-----+-----+-----+-----+---+
+</code></pre></div></p>
+<h2 id="beq">beq<a class="headerlink" href="#beq" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>beq rs1,rs2,offset</code></p>
+<p><strong>Description:</strong> Take the branch if registers rs1 and rs2 are equal.</p>
+<p><strong>Implementation:</strong> <code>if (x[rs1] == x[rs2]) pc += sext(offset)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+---------+-----+-----+-----+--------------+-----+---+
+|31-27|26-25    |24-20|19-15|14-12|11-7          |6-2  |1-0|
++-----+---------+-----+-----+-----+--------------+-----+---+
+|offset[12|10:5]|rs2  |rs1  |000  |offset[4:1|11]|11000|11 |
++-----+---------+-----+-----+-----+--------------+-----+---+
+</code></pre></div></p>
+<h2 id="bne">bne<a class="headerlink" href="#bne" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>bne rs1,rs2,offset</code></p>
+<p><strong>Description:</strong> Take the branch if registers rs1 and rs2 are not equal.</p>
+<p><strong>Implementation:</strong> <code>if (x[rs1] != x[rs2]) pc += sext(offset)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+---------+-----+-----+-----+--------------+-----+---+
+|31-27|26-25    |24-20|19-15|14-12|11-7          |6-2  |1-0|
++-----+---------+-----+-----+-----+--------------+-----+---+
+|offset[12|10:5]|rs2  |rs1  |001  |offset[4:1|11]|11000|11 |
++-----+---------+-----+-----+-----+--------------+-----+---+
+</code></pre></div></p>
+<h2 id="blt">blt<a class="headerlink" href="#blt" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>blt rs1,rs2,offset</code></p>
+<p><strong>Description:</strong> Take the branch if registers rs1 is less than rs2, using signed comparison.</p>
+<p><strong>Implementation:</strong> <code>if (x[rs1] &lt;s x[rs2]) pc += sext(offset)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+---------+-----+-----+-----+--------------+-----+---+
+|31-27|26-25    |24-20|19-15|14-12|11-7          |6-2  |1-0|
++-----+---------+-----+-----+-----+--------------+-----+---+
+|offset[12|10:5]|rs2  |rs1  |100  |offset[4:1|11]|11000|11 |
++-----+---------+-----+-----+-----+--------------+-----+---+
+</code></pre></div></p>
+<h2 id="bge">bge<a class="headerlink" href="#bge" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>bge rs1,rs2,offset</code></p>
+<p><strong>Description:</strong> Take the branch if registers rs1 is greater than or equal to rs2, using signed comparison.</p>
+<p><strong>Implementation:</strong> <code>if (x[rs1] &gt;=s x[rs2]) pc += sext(offset)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+---------+-----+-----+-----+--------------+-----+---+
+|31-27|26-25    |24-20|19-15|14-12|11-7          |6-2  |1-0|
++-----+---------+-----+-----+-----+--------------+-----+---+
+|offset[12|10:5]|rs2  |rs1  |101  |offset[4:1|11]|11000|11 |
++-----+---------+-----+-----+-----+--------------+-----+---+
+</code></pre></div></p>
+<h2 id="bltu">bltu<a class="headerlink" href="#bltu" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>bltu rs1,rs2,offset</code></p>
+<p><strong>Description:</strong> Take the branch if registers rs1 is less than rs2, using unsigned comparison.</p>
+<p><strong>Implementation:</strong> <code>if (x[rs1] &lt;u x[rs2]) pc += sext(offset)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+---------+-----+-----+-----+--------------+-----+---+
+|31-27|26-25    |24-20|19-15|14-12|11-7          |6-2  |1-0|
++-----+---------+-----+-----+-----+--------------+-----+---+
+|offset[12|10:5]|rs2  |rs1  |110  |offset[4:1|11]|11000|11 |
++-----+---------+-----+-----+-----+--------------+-----+---+
+</code></pre></div></p>
+<h2 id="bgeu">bgeu<a class="headerlink" href="#bgeu" title="Permanent link">&para;</a></h2>
+<p><strong>Format:</strong> <code>bgeu rs1,rs2,offset</code></p>
+<p><strong>Description:</strong> Take the branch if registers rs1 is greater than or equal to rs2, using unsigned comparison.</p>
+<p><strong>Implementation:</strong> <code>if (x[rs1] &gt;=u x[rs2]) pc += sext(offset)</code></p>
+<p><strong>Encoding:</strong>
+<div class="highlight"><pre><span></span><code>+-----+---------+-----+-----+-----+--------------+-----+---+
+|31-27|26-25    |24-20|19-15|14-12|11-7          |6-2  |1-0|
++-----+---------+-----+-----+-----+--------------+-----+---+
+|offset[12|10:5]|rs2  |rs1  |111  |offset[4:1|11]|11000|11 |
++-----+---------+-----+-----+-----+--------------+-----+---+
+</code></pre></div></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
+      
+    
+  </body>
+</html>
