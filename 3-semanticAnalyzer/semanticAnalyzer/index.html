@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://gobigc.github.io/wiki/contributing/">
+        <link rel="canonical" href="https://gobigc.github.io/wiki/3-semanticAnalyzer/semanticAnalyzer/">
       
       
-        <link rel="prev" href="../5-errorHandling/errorHandlingNotes/">
+        <link rel="prev" href="../symbolTable/">
       
       
-        <link rel="next" href="../faq/">
+        <link rel="next" href="../../4-codeGenerator/interface/">
       
       
-      <link rel="icon" href="../assets/favicon.ico">
+      <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
-        <title>Contributing - BigC</title>
+        <title>Semantic Analyzer - BigC</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,7 +50,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#want-to-contribute-to-bigc" class="md-skip">
+        <a href="#overview-of-how-the-analyzer-works" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +90,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="BigC" class="md-header__button md-logo" aria-label="BigC" data-md-component="logo">
+    <a href="../.." title="BigC" class="md-header__button md-logo" aria-label="BigC" data-md-component="logo">
       
-  <img src="../assets/apple-touch-icon.png" alt="logo">
+  <img src="../../assets/apple-touch-icon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Contributing
+              Semantic Analyzer
             
           </span>
         </div>
@@ -210,7 +210,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href=".." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   About BigC
@@ -245,9 +245,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="BigC" class="md-nav__button md-logo" aria-label="BigC" data-md-component="logo">
+    <a href="../.." title="BigC" class="md-nav__button md-logo" aria-label="BigC" data-md-component="logo">
       
-  <img src="../assets/apple-touch-icon.png" alt="logo">
+  <img src="../../assets/apple-touch-icon.png" alt="logo">
 
     </a>
     BigC
@@ -307,7 +307,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -371,7 +371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-housekeeping/designChoices/" class="md-nav__link">
+      <a href="../../0-housekeeping/designChoices/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -392,7 +392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-housekeeping/techStack/" class="md-nav__link">
+      <a href="../../0-housekeeping/techStack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -413,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-housekeeping/vscodeLanguageSupport/" class="md-nav__link">
+      <a href="../../0-housekeeping/vscodeLanguageSupport/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -485,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-grammar/bible/" class="md-nav__link">
+      <a href="../../1-grammar/bible/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -506,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-grammar/proof/" class="md-nav__link">
+      <a href="../../1-grammar/proof/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -527,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-grammar/sample/" class="md-nav__link">
+      <a href="../../1-grammar/sample/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -599,7 +599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-syntaxAnalyzer/interface/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/interface/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -620,7 +620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-syntaxAnalyzer/sampleAST/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/sampleAST/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -641,7 +641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-syntaxAnalyzer/syntaxAnalyzerWritingNotes/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/syntaxAnalyzerWritingNotes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -667,6 +667,8 @@
                 
   
   
+    
+  
   
   
     
@@ -681,11 +683,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" checked>
         
           
           <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="">
@@ -699,7 +701,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_5">
             <span class="md-nav__icon md-icon"></span>
             Semantic Analyzer
@@ -713,7 +715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-semanticAnalyzer/interface/" class="md-nav__link">
+      <a href="../interface/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -734,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-semanticAnalyzer/symbolTable/" class="md-nav__link">
+      <a href="../symbolTable/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -752,10 +754,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../3-semanticAnalyzer/semanticAnalyzer/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Semantic Analyzer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -764,6 +786,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#two-pass-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two-pass Approach
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-the-two-pass-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why The Two-pass Approach?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -827,7 +887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/interface/" class="md-nav__link">
+      <a href="../../4-codeGenerator/interface/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -848,7 +908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/riscvModes/" class="md-nav__link">
+      <a href="../../4-codeGenerator/riscvModes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -869,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/registerDefinitions/" class="md-nav__link">
+      <a href="../../4-codeGenerator/registerDefinitions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -890,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/rv64i/" class="md-nav__link">
+      <a href="../../4-codeGenerator/rv64i/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -911,7 +971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/rv64m/" class="md-nav__link">
+      <a href="../../4-codeGenerator/rv64m/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -932,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-codeGenerator/rv64d/" class="md-nav__link">
+      <a href="../../4-codeGenerator/rv64d/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1004,7 +1064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-errorHandling/errorHandlingNotes/" class="md-nav__link">
+      <a href="../../5-errorHandling/errorHandlingNotes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1030,19 +1090,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1051,7 +1102,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1064,7 +1114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../faq/" class="md-nav__link">
+      <a href="../../faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1100,8 +1150,61 @@
                   
 
 
-<h1 id="want-to-contribute-to-bigc">Want to contribute to BigC?<a class="headerlink" href="#want-to-contribute-to-bigc" title="Permanent link">&para;</a></h1>
-<p>It's all here, clone, fork, whatever you want! </p>
+<h1 id="overview-of-how-the-analyzer-works">Overview of How The Analyzer Works<a class="headerlink" href="#overview-of-how-the-analyzer-works" title="Permanent link">&para;</a></h1>
+<h2 id="two-pass-approach">Two-pass Approach<a class="headerlink" href="#two-pass-approach" title="Permanent link">&para;</a></h2>
+<p>The analyzer uses the two-pass approach:</p>
+<ol>
+<li>First pass: visits all the leaf node of the AST and add all the symbols to the table</li>
+<li>Second pass: Traverse the AST again and analyze it with the complete symbol table from the first pass.</li>
+</ol>
+<h2 id="why-the-two-pass-approach">Why The Two-pass Approach?<a class="headerlink" href="#why-the-two-pass-approach" title="Permanent link">&para;</a></h2>
+<p>The first iteration used a naive approach where the analyzer traverse the AST only once, adding symbols and scanning for errors along the way. But this poses 1 major issue. Look at the code snippet below</p>
+<div class="highlight"><pre><span></span><code>int main() {
+    int a = addInt(1,2);
+    return a;
+}
+
+int addInt(int x, int y) {
+    return x + y;
+}
+</code></pre></div>
+<p>Intuitively, this code has no problems whatsoever (by design). However, the first iteration of semantic analyzers screams at me when it scans the code, saying that <code>addInt is an invalid symbol!</code>. Let this be an exercise to the reader to figure out why the first version of semantic analyzers hate this snippet. This is a very character-developing exercise, trust me.</p>
+<p>If you dislike brain exercises, bonkers. The answer is that at the time <code>addInt</code> was called at <code>int a = addInt(1,2);</code>, the symbol was not added to the table, simply because the analyzer traverses from the root up (or down?), and the function was declared after the function call. The two-pass approach was an easy solution.</p>
+<h1 id="brief-explanation-of-how-each-semantic-error-is-caught">Brief Explanation of How Each Semantic Error is Caught<a class="headerlink" href="#brief-explanation-of-how-each-semantic-error-is-caught" title="Permanent link">&para;</a></h1>
+<h2 id="index-out-of-bound">Index Out of Bound<a class="headerlink" href="#index-out-of-bound" title="Permanent link">&para;</a></h2>
+<p>The array size is stored as a field in the symbol table, so the check is quite straight forward. If the index is a variable, the value of the variable is also checked to scan for out of bounds error.</p>
+<div class="highlight"><pre><span></span><code>int arr[5];
+int x = arr[7]; // ERROR
+
+int y = 7;
+int z = arr[y]; // ALSO ERROR
+</code></pre></div>
+<h2 id="divide-by-zero">Divide by Zero<a class="headerlink" href="#divide-by-zero" title="Permanent link">&para;</a></h2>
+<p>Whenever the <code>/</code> operator is called, we check if the second operand is a zero or not. If yes, we throw the error.</p>
+<h2 id="type-mismatch">Type Mismatch<a class="headerlink" href="#type-mismatch" title="Permanent link">&para;</a></h2>
+<h3 id="assignment-type-mismatch">Assignment Type Mismatch<a class="headerlink" href="#assignment-type-mismatch" title="Permanent link">&para;</a></h3>
+<p>We check if the type in the declaration and the initializer matches or not. The type is inferred from the syntax analysis, so the check is very straightforward.</p>
+<h3 id="function-return-type-mismatch">Function Return Type Mismatch<a class="headerlink" href="#function-return-type-mismatch" title="Permanent link">&para;</a></h3>
+<p>The return type for a function is stored in the symbol table, so this check is also simple.</p>
+<h3 id="operator-type-mismatch">Operator Type Mismatch<a class="headerlink" href="#operator-type-mismatch" title="Permanent link">&para;</a></h3>
+<p>Whenever an operator is called, we check the type of both operands.</p>
+<ul>
+<li>Logical operators only allow boolean expressions</li>
+<li>Numerical operators only allow <code>int</code> or <code>float</code>, and both operators must be the same type (we don't support type conversions yet)</li>
+</ul>
+<h3 id="function-argument-type-mismatch">Function Argument Type Mismatch<a class="headerlink" href="#function-argument-type-mismatch" title="Permanent link">&para;</a></h3>
+<p>The arguments in each function are also stored in the symbol table with their type, so the check is similar to other checks above.</p>
+<h2 id="invalid-function">Invalid Function<a class="headerlink" href="#invalid-function" title="Permanent link">&para;</a></h2>
+<h3 id="argument-count-mismatch">Argument Count Mismatch<a class="headerlink" href="#argument-count-mismatch" title="Permanent link">&para;</a></h3>
+<p>The parameters are kept inside an array, so we only need to compare the length of the arguments array and the parameters array.</p>
+<h2 id="undefined-symbol">Undefined Symbol<a class="headerlink" href="#undefined-symbol" title="Permanent link">&para;</a></h2>
+<p>The table is a list of maps, so each variable is assigned a name, and looking up for the symbols is just using the map's query. For variables with the same name but different scope, the key for them will be determined by their scope. Each symbol's key will have a prefix based on the function that they are stored within.</p>
+<div class="highlight"><pre><span></span><code>int addInt(int x, int y) {
+    return x + y; // addInt.x and addInt.y respectively.
+}
+</code></pre></div>
+<h2 id="symbol-out-of-scope">Symbol Out of Scope<a class="headerlink" href="#symbol-out-of-scope" title="Permanent link">&para;</a></h2>
+<p>The valid first line and valid last line of a symbol is stored in the table, so we just check if the line from which the symbol is called fits between the allowed lines.</p>
 
 
 
@@ -1148,10 +1251,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>
