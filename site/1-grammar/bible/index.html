@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://gobigc.github.io/wiki/1-grammar/bible/">
       
       
-        <link rel="prev" href="../../0-housekeeping/vscodeLanguageSupport/">
+        <link rel="prev" href="../../0-housekeeping/quirks/">
       
       
         <link rel="next" href="../proof/">
@@ -418,6 +418,27 @@
   
   <span class="md-ellipsis">
     Language Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0-housekeeping/quirks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Language quirks
   </span>
   
 
@@ -1092,6 +1113,78 @@
   
   
   
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_8" id="__nav_1_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Built-in Functions
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            Built-in Functions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-builtinFunctions/builtin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Builtins
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../contributing/" class="md-nav__link">
         
@@ -1151,179 +1244,180 @@
 
 
 <h1 id="bigc-full-grammar">BigC Full Grammar<a class="headerlink" href="#bigc-full-grammar" title="Permanent link">&para;</a></h1>
+<p>Note: The function declaration is there to support built-in functions (those starts with underscore '_')--like <code>_printInt()</code>, <code>_printFloat()</code>, etc. Custom function definition is not supported as of now.</p>
 <p>You can also read this at the <a href="https://github.com/GoBigC/grammar/blob/main/BigC.g4">grammar repository</a>.</p>
 <h2 id="parser-rules">Parser Rules<a class="headerlink" href="#parser-rules" title="Permanent link">&para;</a></h2>
 <p>program
-    : declaration* EOF
-    ;</p>
+: declaration* EOF
+;</p>
 <p>declaration
-    : type Identifier arrayNotation? declarationRemainder
-    ;</p>
+: type Identifier arrayNotation? declarationRemainder
+;</p>
 <p>arrayNotation
-    : '[' expression ']'
-    ;</p>
+: '[' expression ']'
+;</p>
 <p>type
-    : 'int'
-    | 'float'
-    | 'bool'
-    | 'char'
-    | 'void' 
-    ;</p>
-<p>declarationRemainder 
-    : '(' parameterList? ')' block 
-    | variableInitializer? ';'
-    ;</p>
+: 'int'
+| 'float'
+| 'bool'
+| 'char'
+| 'void'
+;</p>
+<p>declarationRemainder
+: '(' parameterList? ')' block
+| variableInitializer? ';'
+;</p>
 <p>parameterList
-    : parameter (',' parameter)*
-    ;</p>
+: parameter (',' parameter)*
+;</p>
 <p>parameter
-    : type Identifier arrayNotation?
-    ;</p>
-<p>block 
-    : '{' blockItem* '}'
-    ;</p>
+: type Identifier arrayNotation?
+;</p>
+<p>block
+: '{' blockItem* '}'
+;</p>
 <p>blockItem
-    : declaration
-    | statement
-    ;</p>
+: declaration
+| statement
+;</p>
 <p>statement
-    : ifStatement
-    | nonIfStatement
-    ;</p>
+: ifStatement
+| nonIfStatement
+;</p>
 <p>ifStatement
-    : 'if' '(' expression ')' block elseClause?
-    ;</p>
+: 'if' '(' expression ')' block elseClause?
+;</p>
 <p>elseClause
-    : 'else' (block | ifStatement)
-    ;</p>
-<p>nonIfStatement 
-    : expression ';'
-    | whileStatement
-    | returnStatement
-    ;</p>
+: 'else' (block | ifStatement)
+;</p>
+<p>nonIfStatement
+: expression ';'
+| whileStatement
+| returnStatement
+;</p>
 <p>whileStatement
-    : 'while' '(' expression ')' block 
-    ;</p>
-<p>returnStatement 
-    : 'return' expression ';'
-    ;</p>
+: 'while' '(' expression ')' block
+;</p>
+<p>returnStatement
+: 'return' expression ';'
+;</p>
 <p>// Expression precedence (from highest to lowest):<br />
-// 1. Primary expressions (constants, variables, parenthesized)   <br />
-// 2. Postfix operations (arr[i], fn(), x++, x--) -- only support the first 2 <br />
-// 3. Unary operations (-x, !x, ++x, --x) -- only support the first two   <br />
-// 4. Multiplicative (*, /)   <br />
-// 5. Additive (+, -) <br />
-// 6. Comparison (&lt;, &lt;=, &gt;=, &gt;)   <br />
-// 7. Equality (==, !=)   <br />
+// 1. Primary expressions (constants, variables, parenthesized)<br />
+// 2. Postfix operations (arr[i], fn(), x++, x--) -- only support the first 2<br />
+// 3. Unary operations (-x, !x, ++x, --x) -- only support the first two<br />
+// 4. Multiplicative (*, /)<br />
+// 5. Additive (+, -)<br />
+// 6. Comparison (&lt;, &lt;=, &gt;=, &gt;)<br />
+// 7. Equality (==, !=)<br />
 // 8. Logical AND (&amp;&amp;)<br />
-// 9. Logical OR (||) <br />
-// 10. Assignment (=)   </p>
-<p>expression 
-    : assignmentExpression 
-    ;</p>
+// 9. Logical OR (||)<br />
+// 10. Assignment (=)</p>
+<p>expression
+: assignmentExpression
+;</p>
 <p>assignmentExpression
-    : logicalOrExpression assignmentRest?
-    ;</p>
+: logicalOrExpression assignmentRest?
+;</p>
 <p>assignmentRest
-    : '=' assignmentExpression
-    ;</p>
+: '=' assignmentExpression
+;</p>
 <p>variableInitializer
-    : '=' expression
-    ;</p>
+: '=' expression
+;</p>
 <p>logicalOrExpression
-    : logicalAndExpression logicalOrRest*
-    ;</p>
+: logicalAndExpression logicalOrRest*
+;</p>
 <p>logicalOrRest
-    : '||' logicalAndExpression
-    ;</p>
+: '||' logicalAndExpression
+;</p>
 <p>logicalAndExpression
-    : equalityExpression logicalAndRest*
-    ;</p>
+: equalityExpression logicalAndRest*
+;</p>
 <p>logicalAndRest
-    : '&amp;&amp;' equalityExpression
-    ;</p>
+: '&amp;&amp;' equalityExpression
+;</p>
 <p>equalityExpression
-    : comparisonExpression equalityRest*
-    ;</p>
+: comparisonExpression equalityRest*
+;</p>
 <p>equalityRest
-    : equalityOperator comparisonExpression
-    ;</p>
-<p>equalityOperator 
-    : '=='
-    | '!='
-    ;</p>
-<p>comparisonExpression 
-    : additionExpression comparisonRest*
-    ;</p>
+: equalityOperator comparisonExpression
+;</p>
+<p>equalityOperator
+: '=='
+| '!='
+;</p>
+<p>comparisonExpression
+: additionExpression comparisonRest*
+;</p>
 <p>comparisonRest
-    : comparisonOperator additionExpression
-    ;</p>
+: comparisonOperator additionExpression
+;</p>
 <p>comparisonOperator
-    : '&gt;'
-    | '&lt;'
-    | '&gt;='
-    | '&lt;='
-    ;</p>
+: '&gt;'
+| '&lt;'
+| '&gt;='
+| '&lt;='
+;</p>
 <p>additionExpression
-    : multiplicationExpression additionExpressionRest*
-    ;</p>
+: multiplicationExpression additionExpressionRest*
+;</p>
 <p>additionExpressionRest
-    : addSubtractOperator multiplicationExpression
-    ;</p>
-<p>addSubtractOperator 
-    : '+'
-    | '-'
-    ;</p>
+: addSubtractOperator multiplicationExpression
+;</p>
+<p>addSubtractOperator
+: '+'
+| '-'
+;</p>
 <p>multiplicationExpression
-    : unaryExpression multiplicationExpressionRest*
-    ;</p>
+: unaryExpression multiplicationExpressionRest*
+;</p>
 <p>multiplicationExpressionRest
-    : multDivModOperator unaryExpression
-    ;</p>
+: multDivModOperator unaryExpression
+;</p>
 <p>multDivModOperator
-    : '*'
-    | '/'
-    ;</p>
-<p>unaryExpression 
-    : postfixExpression 
-    | unaryOperator unaryExpression 
-    ;</p>
+: '*'
+| '/'
+;</p>
+<p>unaryExpression
+: postfixExpression
+| unaryOperator unaryExpression
+;</p>
 <p>unaryOperator
-    : '!'
-    | '-'
-    ;</p>
-<p>postfixExpression 
-    : primaryExpression (arrayAccess | functionCallArgs)?
-    ;</p>
-<p>arrayAccess 
-    : '[' expression ']'
-    ;</p>
+: '!'
+| '-'
+;</p>
+<p>postfixExpression
+: primaryExpression (arrayAccess | functionCallArgs)?
+;</p>
+<p>arrayAccess
+: '[' expression ']'
+;</p>
 <p>functionCallArgs
-    : '(' argList? ')'
-    ;</p>
-<p>argList 
-    : assignmentExpression (',' assignmentExpression)*
-    ;</p>
-<p>primaryExpression 
-    : Identifier 
-    | constant 
-    | '(' expression ')'
-    ;</p>
+: '(' argList? ')'
+;</p>
+<p>argList
+: assignmentExpression (',' assignmentExpression)*
+;</p>
+<p>primaryExpression
+: Identifier
+| constant
+| '(' expression ')'
+;</p>
 <p>constant
-    : IntegerConstant 
-    | FloatingConstant 
-    | BooleanConstant 
-    | CharConstant 
-    ;</p>
+: IntegerConstant
+| FloatingConstant
+| BooleanConstant
+| CharConstant
+;</p>
 <h2 id="lexer-rules">Lexer Rules<a class="headerlink" href="#lexer-rules" title="Permanent link">&para;</a></h2>
 <p>BooleanConstant: 'true' | 'false';<br />
-CharConstant: '\'' . '\'';  </p>
-<p>Identifier: [a-zA-Z_][a-zA-Z0-9_]*; </p>
-<p>IntegerConstant: [0-9]+;  <br />
-FloatingConstant: [0-9]+ '.' [0-9]+;    </p>
-<p>WS: [ \t\r\n]+ -&gt; skip;   <br />
-COMMENT: '//' ~[\r\n]* -&gt; skip;   <br />
-MULTILINE_COMMENT: '/*' .*? '*/' -&gt; skip;   </p>
+CharConstant: '\'' . '\'';</p>
+<p>Identifier: [a-zA-Z_][a-zA-Z0-9_]*;</p>
+<p>IntegerConstant: [0-9]+;<br />
+FloatingConstant: [0-9]+ '.' [0-9]+;</p>
+<p>WS: [ \t\r\n]+ -&gt; skip;<br />
+COMMENT: '//' ~[\r\n]* -&gt; skip;<br />
+MULTILINE_COMMENT: '/*' .*? '*/' -&gt; skip;</p>
 
 
 

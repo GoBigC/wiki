@@ -40,6 +40,7 @@ nav:
           - Design Choices: 0-housekeeping/designChoices.md
           - Tech Stack: 0-housekeeping/techStack.md
           - Language Support: 0-housekeeping/vscodeLanguageSupport.md
+          - Language quirks: 0-housekeeping/quirks.md
       - Grammar:
           - Bible: 1-grammar/bible.md
           - Proof: 1-grammar/proof.md
@@ -61,5 +62,7 @@ nav:
           - RV64D instructions: 4-codeGenerator/rv64d.md
       - Error Handling:
           - Notes: 5-errorHandling/errorHandlingNotes.md
+      - Built-in Functions:
+          - Builtins: 6-builtinFunctions/builtin.md
       - Contributing: contributing.md
       - FAQ: faq.md

@@ -1,165 +1,167 @@
 # Sample BigC Code
-See all sample code files in [BigC repository](https://github.com/GoBigC/BigC/blob/main/test/). Here is one of such: 
+
+See [benchmark test](https://github.com/GoBigC/BigC/blob/main/test/benchmark.uia). This example may not be comprehensive.
 
 ```
-/* Comprehensive test file for BigC grammar */
+int x = 15;
+float y = 5.5;
 
-// Global variable declarations with all primitive types
-int globalInt = 42;
-float globalFloat = 3.14159;
-bool globalBool = true;
-char globalChar = 'A';
-int globalInt2 = -16; 
-float globalFloat2 = -1.2321;
-
-// Array declaration with size (syntax depends on your grammar rules)
-int globalArray[10];
-
-// Function to fill an array
-void fillArray(int arr[43], int value) {
-    int i = 0;
-    while (i < 5) {
-        arr[i] = value;
-        i = i + 1;
-    }
-}
-
-// Function to sum array elements
-int sumArray(int arr[5]) {
-    int i = 0;
-    int sum = 0;
-    
-    while (i < 5) {
-        sum = sum + arr[i];
-        i = i + 1;
-    }
-    
-    return sum;
-}
-
-// Function declaration with parameters
-int max(int a, int b) {
-    if (a > b) {
-        return a;
-    } else {
-        return b;
-    }
-}
-
-// Function with multiple parameters of different types
-float calculate(int x, float y, bool condition) {
-    float result = 0.0;
-    
-    if (condition) {
-        result = x + y;
-    } else {
-        result = x - y;
-    }
-    
-    return result;
-}
-
-// Recursive function to test function calls
-int factorial(int n) {
-    if (n <= 1) {
-        return 1;
-    } else {
-        return n * factorial(n - 1);
-    }
-}
-
-// Main function with comprehensive language feature testing
 int main() {
-    // Local variable declarations
-    int a = 10;
-    int b = 20;
-    float f = 1.5;
-    bool flag = false;
-    char c = 'X';
-    
-    // Local array declaration
-    int numbers[5];
-    
-    // Initialize array using array access
-    numbers[0] = 10;
-    numbers[1] = 20;
-    numbers[2] = 30;
-    numbers[3] = 40;
-    numbers[4] = 50;
-    
-    // Array access in expressions
-    int arraySum = numbers[0] + numbers[1];
-    
-    // Array access with expressions as index
-    int index = 2;
-    int valueAtIndex = numbers[index];
-    int valueAtExpr = numbers[index + 1];
-    
-    // Nested array access in expressions
-    int complexArrayExpr = numbers[numbers[0] / 10];
-    
-    // Fill array using function
-    fillArray(numbers, 5);
-    
-    // Sum array using function
-    int totalSum = sumArray(numbers);
-    
-    // Basic arithmetic operators
-    int sum = a + b;
-    int diff = b - a;
-    int product = a * b;
-    int quotient = b / a;
-    
-    // Complex arithmetic expression with nested parentheses
-    float complexExpr = (a + b) * (f / (b - a));
-    
-    // Comparison operators
-    bool test1 = a < b;
-    bool test2 = a > b;
-    bool test3 = a <= b;
-    bool test4 = a >= b;
-    
-    // Equality operators
-    bool equal = a == b;
-    bool notEqual = a != b;
-    
-    // Logical operators with precedence testing
-    bool logicalExpr1 = a < b && f > 1.0;
-    bool logicalExpr2 = a > b || f < 2.0;
-    bool logicalExpr3 = !(a == b) && (f >= 1.0 || b <= 20);
-    
-    // Assignment in expression
-    bool assignTest = (flag = true);
-    
-    // Function calls
-    int maxValue = max(a, b);
-    float calcResult = calculate(a, f, flag);
-    int fact5 = factorial(5);
-    
-    // Function call as part of expression
-    int exprWithCall = a + factorial(3);
-    
-    // Nested function calls
-    int nestedCall = max(factorial(2), factorial(3));
-    
-    // Array access in function call
-    int maxArrayValue = max(numbers[1], numbers[3]);
-    
-    // If-else with array access in condition
-    if (numbers[0] > numbers[1]) {
-        numbers[2] = numbers[0];
-    } else {
-        numbers[2] = numbers[1];
-    }
-    
-    // While loop with array access
-    int j = 0;
-    while (j < 5 && numbers[j] < 100) {
-        numbers[j] = numbers[j] * 2;
-        j = j + 1;
-    }
-    
-    // Return statement with expression containing array access
-    return numbers[4] + factorial(numbers[0] / 10);
+    // ================INT====================
+    int addInt = 1 + 2050;
+    _printInt(addInt); // Expected: 2051
+
+    int subInt = 5 - 2;
+    _printInt(subInt); // Expected: 3
+
+    int mulInt = 3 * 4;
+    _printInt(mulInt); // Expected: 12
+
+    int divInt = 8 / 2;
+    _printInt(divInt); // Expected: 4
+
+    int literalInt = 4;
+    _printInt(literalInt); // Expected: 4
+
+    int minusInt = -5;
+    _printInt(minusInt); // Expected: -5
+
+    int mixedAddInt = x + 12;
+    _printInt(mixedAddInt); // Expected: 22
+
+    int mixMulInt = x * 1;
+    _printInt(mixMulInt); // Expected: 10
+
+    int mixSubInt = x -1;
+    _printInt(mixSubInt);  // Expected: 9
+
+    int mixDivInt = x/2;
+    _printInt(mixDivInt);  // Expected: 5
+
+    _printInt(13); // Expected: 13
+
+    // =================FLOAT===================
+    float addFloat = 3.14 + 2.5;
+    _printFloat(addFloat); // Expected: 5.64
+
+    float subFloat = 10.5 - 4.2;
+    _printFloat(subFloat); // Expected: 6.3
+
+    float mulFloat = 2.0 * 3.5;
+    _printFloat(mulFloat); // Expected: 7.0
+
+    float divFloat = 15.0 / 3.0;
+    _printFloat(divFloat); // Expected: 5.0
+
+    float literalFloat = 6.28;
+    _printFloat(literalFloat); // Expected: 6.28
+
+    float minusFloat = -3.14;
+    _printFloat(minusFloat); // Expected: -3.14
+
+    float mixedAddFloat = y + 2.3;
+    _printFloat(mixedAddFloat); // Expected: 7.8
+
+    float mixMulFloat = y * 2.0;
+    _printFloat(mixMulFloat); // Expected: 11.0
+
+    float mixSubFloat = y - 1.1;
+    _printFloat(mixSubFloat); // Expected: 4.4
+
+    float mixDivFloat = y / 2.2;
+    _printFloat(mixDivFloat); // Expected: 2.5
+
+    _printFloat(3.14159); // Expected: 3.14159
+
+    // =================CHAR===================
+    char literalChar = 'A';
+    _printChar(literalChar);
+
+    _printChar('B');
+
+    // =================BOOL===================
+    bool trueValue = true;
+    _printBool(trueValue); // Expected: 1
+
+    bool falseValue = false;
+    _printBool(falseValue); // Expected: 0
+
+    bool andOperation = true && false;
+    _printBool(andOperation); // Expected: 0
+
+    bool orOperation = true || false;
+    _printBool(orOperation); // Expected: 1
+
+    bool notOperation = !trueValue;
+    _printBool(notOperation); // Expected: 0
+
+    bool comparisonLT = (5 < 10);
+    _printBool(comparisonLT); // Expected: 1
+
+    bool comparisonGT = (20 > 15);
+    _printBool(comparisonGT); // Expected: 1
+
+    bool comparisonEQ = (7 == 7);
+    _printBool(comparisonEQ); // Expected: 1
+
+    bool comparisonNEQ = (8 != 9);
+    _printBool(comparisonNEQ); // Expected: 1
+
+    // ================ARRAY====================
+    int a[x];
+    a[0] = 69;
+    _printInt(a[0]);
+
+    // this is not going to work --> workaround at (I)
+    // int z = 4;
+    // a[x-z] = 420; // 42.0 thi sao?
+    // int n = a[x-z];
+    // _printInt(n);
+
+    // (I)
+    int z = 4;
+    int k = x-z;
+    a[k] = 420;
+    int n = a[k];
+    _printInt(n);
+
+    // (I)
+    a[k] = 425;
+    _printInt(a[k]);
+    n = a[k];
+    _printInt(n);
+
+    int n1;
+    n1 = a[k];
+    _printInt(n1);
+
+    a[0] = 1;
+    _printInt(a[0]);
+    a[1] = 1;
+    // a[2] = 1.2; // should error
+    // int d[0]; // should error
+
+    int ff = a[0] + a[1];
+    _printInt(n);
+
+    int b[x+1];
+    float c[x+z+1];
+    c[0] = 3.1412;
+    c[1] = 6.699;
+    _printFloat(c[1]);
+    _printFloat(c[0]);
+
+    float prices[3];
+    prices[0] = 10.5;
+    prices[1] = 20.75;
+    prices[2] = 15.25;
+
+    _printFloat(prices[0]);  // expect: 10.5
+    _printFloat(prices[1]);  // expext: 20.75
+
+    float total = prices[0] + prices[1] + prices[2];
+    _printFloat(total);  // expect: 46.5
+
+    return 0;
 }
 ```

@@ -2,12 +2,13 @@
 
 ## Two-pass Approach
 
-The analyzer uses the two-pass approach:
+The analyzer uses the three-pass approach:
 
-1. First pass: visits all the leaf node of the AST and add all the symbols to the table
+1. First pass: visits all the leaf node of the AST and add all the symbols to the table.
 2. Second pass: Traverse the AST again and analyze it with the complete symbol table from the first pass.
+3. Third pass: Finalize array sizes to ensure that before we generate code, we know exactly how long the array should be.
 
-## Why The Two-pass Approach?
+## Why The Thee-pass Approach?
 
 The first iteration used a naive approach where the analyzer traverse the AST only once, adding symbols and scanning for errors along the way. But this poses 1 major issue. Look at the code snippet below
 
@@ -25,6 +26,15 @@ int addInt(int x, int y) {
 Intuitively, this code has no problems whatsoever (by design). However, the first iteration of semantic analyzers screams at me when it scans the code, saying that `addInt is an invalid symbol!`. Let this be an exercise to the reader to figure out why the first version of semantic analyzers hate this snippet. This is a very character-developing exercise, trust me.
 
 If you dislike brain exercises, bonkers. The answer is that at the time `addInt` was called at `int a = addInt(1,2);`, the symbol was not added to the table, simply because the analyzer traverses from the root up (or down?), and the function was declared after the function call. The two-pass approach was an easy solution.
+
+The third pass prevents this sort of behavior:
+
+```
+int a = scanf();
+char arr[a];
+```
+
+which allows array size to be determined at runtime. Allocating memory at runtime is something we are not supporting right now. BigC requires all array size be compile-time constant expressions, meaning the exact size of all arrays must be known at compilation.
 
 # Brief Explanation of How Each Semantic Error is Caught
 

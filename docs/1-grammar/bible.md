@@ -1,223 +1,227 @@
 # BigC Full Grammar
 
+Note: The function declaration is there to support built-in functions (those starts with underscore '\_')--like `_printInt()`, `_printFloat()`, etc. Custom function definition is not supported as of now.
+
 You can also read this at the [grammar repository](https://github.com/GoBigC/grammar/blob/main/BigC.g4).
 
-## Parser Rules 
+## Parser Rules
+
 program
-    : declaration* EOF
-    ;
+: declaration\* EOF
+;
 
 declaration
-    : type Identifier arrayNotation? declarationRemainder
-    ;
+: type Identifier arrayNotation? declarationRemainder
+;
 
 arrayNotation
-    : '[' expression ']'
-    ;
+: '[' expression ']'
+;
 
 type
-    : 'int'
-    | 'float'
-    | 'bool'
-    | 'char'
-    | 'void' 
-    ;
+: 'int'
+| 'float'
+| 'bool'
+| 'char'
+| 'void'
+;
 
-declarationRemainder 
-    : '(' parameterList? ')' block 
-    | variableInitializer? ';'
-    ;
+declarationRemainder
+: '(' parameterList? ')' block
+| variableInitializer? ';'
+;
 
 parameterList
-    : parameter (',' parameter)*
-    ;
+: parameter (',' parameter)\*
+;
 
 parameter
-    : type Identifier arrayNotation?
-    ;
+: type Identifier arrayNotation?
+;
 
-block 
-    : '{' blockItem* '}'
-    ;
+block
+: '{' blockItem\* '}'
+;
 
 blockItem
-    : declaration
-    | statement
-    ;
+: declaration
+| statement
+;
 
 statement
-    : ifStatement
-    | nonIfStatement
-    ;
+: ifStatement
+| nonIfStatement
+;
 
 ifStatement
-    : 'if' '(' expression ')' block elseClause?
-    ;
+: 'if' '(' expression ')' block elseClause?
+;
 
 elseClause
-    : 'else' (block | ifStatement)
-    ;
+: 'else' (block | ifStatement)
+;
 
-nonIfStatement 
-    : expression ';'
-    | whileStatement
-    | returnStatement
-    ;
+nonIfStatement
+: expression ';'
+| whileStatement
+| returnStatement
+;
 
 whileStatement
-    : 'while' '(' expression ')' block 
-    ;
+: 'while' '(' expression ')' block
+;
 
-returnStatement 
-    : 'return' expression ';'
-    ;
+returnStatement
+: 'return' expression ';'
+;
 
 // Expression precedence (from highest to lowest):  
-// 1. Primary expressions (constants, variables, parenthesized)     
-// 2. Postfix operations (arr[i], fn(), x++, x--) -- only support the first 2   
-// 3. Unary operations (-x, !x, ++x, --x) -- only support the first two     
-// 4. Multiplicative (*, /)     
-// 5. Additive (+, -)   
-// 6. Comparison (<, <=, >=, >)     
-// 7. Equality (==, !=)     
+// 1. Primary expressions (constants, variables, parenthesized)  
+// 2. Postfix operations (arr[i], fn(), x++, x--) -- only support the first 2  
+// 3. Unary operations (-x, !x, ++x, --x) -- only support the first two  
+// 4. Multiplicative (\*, /)  
+// 5. Additive (+, -)  
+// 6. Comparison (<, <=, >=, >)  
+// 7. Equality (==, !=)  
 // 8. Logical AND (&&)  
-// 9. Logical OR (||)   
-// 10. Assignment (=)   
+// 9. Logical OR (||)  
+// 10. Assignment (=)
 
-expression 
-    : assignmentExpression 
-    ;
+expression
+: assignmentExpression
+;
 
 assignmentExpression
-    : logicalOrExpression assignmentRest?
-    ;
+: logicalOrExpression assignmentRest?
+;
 
 assignmentRest
-    : '=' assignmentExpression
-    ;
+: '=' assignmentExpression
+;
 
 variableInitializer
-    : '=' expression
-    ;
+: '=' expression
+;
 
 logicalOrExpression
-    : logicalAndExpression logicalOrRest*
-    ;
+: logicalAndExpression logicalOrRest\*
+;
 
 logicalOrRest
-    : '||' logicalAndExpression
-    ;
+: '||' logicalAndExpression
+;
 
 logicalAndExpression
-    : equalityExpression logicalAndRest*
-    ;
+: equalityExpression logicalAndRest\*
+;
 
 logicalAndRest
-    : '&&' equalityExpression
-    ;
+: '&&' equalityExpression
+;
 
 equalityExpression
-    : comparisonExpression equalityRest*
-    ;
+: comparisonExpression equalityRest\*
+;
 
 equalityRest
-    : equalityOperator comparisonExpression
-    ;
+: equalityOperator comparisonExpression
+;
 
-equalityOperator 
-    : '=='
-    | '!='
-    ;
+equalityOperator
+: '=='
+| '!='
+;
 
-comparisonExpression 
-    : additionExpression comparisonRest*
-    ;
+comparisonExpression
+: additionExpression comparisonRest\*
+;
 
 comparisonRest
-    : comparisonOperator additionExpression
-    ;
+: comparisonOperator additionExpression
+;
 
 comparisonOperator
-    : '>'
-    | '<'
-    | '>='
-    | '<='
-    ;
+: '>'
+| '<'
+| '>='
+| '<='
+;
 
 additionExpression
-    : multiplicationExpression additionExpressionRest*
-    ;
+: multiplicationExpression additionExpressionRest\*
+;
 
 additionExpressionRest
-    : addSubtractOperator multiplicationExpression
-    ;
+: addSubtractOperator multiplicationExpression
+;
 
-addSubtractOperator 
-    : '+'
-    | '-'
-    ;
+addSubtractOperator
+: '+'
+| '-'
+;
 
 multiplicationExpression
-    : unaryExpression multiplicationExpressionRest*
-    ;
+: unaryExpression multiplicationExpressionRest\*
+;
 
 multiplicationExpressionRest
-    : multDivModOperator unaryExpression
-    ;
+: multDivModOperator unaryExpression
+;
 
 multDivModOperator
-    : '*'
-    | '/'
-    ;
+: '\*'
+| '/'
+;
 
-unaryExpression 
-    : postfixExpression 
-    | unaryOperator unaryExpression 
-    ;
+unaryExpression
+: postfixExpression
+| unaryOperator unaryExpression
+;
 
 unaryOperator
-    : '!'
-    | '-'
-    ;
+: '!'
+| '-'
+;
 
-postfixExpression 
-    : primaryExpression (arrayAccess | functionCallArgs)?
-    ;
+postfixExpression
+: primaryExpression (arrayAccess | functionCallArgs)?
+;
 
-arrayAccess 
-    : '[' expression ']'
-    ;
+arrayAccess
+: '[' expression ']'
+;
 
 functionCallArgs
-    : '(' argList? ')'
-    ;
+: '(' argList? ')'
+;
 
-argList 
-    : assignmentExpression (',' assignmentExpression)*
-    ;
+argList
+: assignmentExpression (',' assignmentExpression)\*
+;
 
-primaryExpression 
-    : Identifier 
-    | constant 
-    | '(' expression ')'
-    ;
+primaryExpression
+: Identifier
+| constant
+| '(' expression ')'
+;
 
 constant
-    : IntegerConstant 
-    | FloatingConstant 
-    | BooleanConstant 
-    | CharConstant 
-    ;
+: IntegerConstant
+| FloatingConstant
+| BooleanConstant
+| CharConstant
+;
 
-## Lexer Rules 
+## Lexer Rules
+
 BooleanConstant: 'true' | 'false';  
-CharConstant: '\'' . '\'';  
+CharConstant: '\'' . '\'';
 
-Identifier: [a-zA-Z_][a-zA-Z0-9_]*; 
+Identifier: [a-zA-Z\_][a-zA-Z0-9_]\*;
 
-IntegerConstant: [0-9]+;    
-FloatingConstant: [0-9]+ '.' [0-9]+;    
+IntegerConstant: [0-9]+;  
+FloatingConstant: [0-9]+ '.' [0-9]+;
 
-WS: [ \t\r\n]+ -> skip;     
-COMMENT: '//' ~[\r\n]\* -> skip;     
-MULTILINE_COMMENT: '/\*' .*? '\*/' -> skip;   
+WS: [ \t\r\n]+ -> skip;  
+COMMENT: '//' ~[\r\n]\* -> skip;  
+MULTILINE_COMMENT: '/\*' .\*? '\*/' -> skip;
