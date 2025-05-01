@@ -1,6 +1,6 @@
 # Overview of How The Analyzer Works
 
-## Two-pass Approach
+## Three-pass Approach
 
 The analyzer uses the three-pass approach:
 
