@@ -812,9 +812,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-the-two-pass-approach" class="md-nav__link">
+  <a href="#why-the-thee-pass-approach" class="md-nav__link">
     <span class="md-ellipsis">
-      Why The Two-pass Approach?
+      Why The Thee-pass Approach?
     </span>
   </a>
   
@@ -1092,6 +1092,78 @@
   
   
   
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_8" id="__nav_1_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Built-in Functions
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            Built-in Functions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-builtinFunctions/builtin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Builtins
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../contributing/" class="md-nav__link">
         
@@ -1152,12 +1224,13 @@
 
 <h1 id="overview-of-how-the-analyzer-works">Overview of How The Analyzer Works<a class="headerlink" href="#overview-of-how-the-analyzer-works" title="Permanent link">&para;</a></h1>
 <h2 id="two-pass-approach">Two-pass Approach<a class="headerlink" href="#two-pass-approach" title="Permanent link">&para;</a></h2>
-<p>The analyzer uses the two-pass approach:</p>
+<p>The analyzer uses the three-pass approach:</p>
 <ol>
-<li>First pass: visits all the leaf node of the AST and add all the symbols to the table</li>
+<li>First pass: visits all the leaf node of the AST and add all the symbols to the table.</li>
 <li>Second pass: Traverse the AST again and analyze it with the complete symbol table from the first pass.</li>
+<li>Third pass: Finalize array sizes to ensure that before we generate code, we know exactly how long the array should be.</li>
 </ol>
-<h2 id="why-the-two-pass-approach">Why The Two-pass Approach?<a class="headerlink" href="#why-the-two-pass-approach" title="Permanent link">&para;</a></h2>
+<h2 id="why-the-thee-pass-approach">Why The Thee-pass Approach?<a class="headerlink" href="#why-the-thee-pass-approach" title="Permanent link">&para;</a></h2>
 <p>The first iteration used a naive approach where the analyzer traverse the AST only once, adding symbols and scanning for errors along the way. But this poses 1 major issue. Look at the code snippet below</p>
 <div class="highlight"><pre><span></span><code>int main() {
     int a = addInt(1,2);
@@ -1170,6 +1243,11 @@ int addInt(int x, int y) {
 </code></pre></div>
 <p>Intuitively, this code has no problems whatsoever (by design). However, the first iteration of semantic analyzers screams at me when it scans the code, saying that <code>addInt is an invalid symbol!</code>. Let this be an exercise to the reader to figure out why the first version of semantic analyzers hate this snippet. This is a very character-developing exercise, trust me.</p>
 <p>If you dislike brain exercises, bonkers. The answer is that at the time <code>addInt</code> was called at <code>int a = addInt(1,2);</code>, the symbol was not added to the table, simply because the analyzer traverses from the root up (or down?), and the function was declared after the function call. The two-pass approach was an easy solution.</p>
+<p>The third pass prevents this sort of behavior:</p>
+<div class="highlight"><pre><span></span><code>int a = scanf();
+char arr[a];
+</code></pre></div>
+<p>which allows array size to be determined at runtime. Allocating memory at runtime is something we are not supporting right now. BigC requires all array size be compile-time constant expressions, meaning the exact size of all arrays must be known at compilation.</p>
 <h1 id="brief-explanation-of-how-each-semantic-error-is-caught">Brief Explanation of How Each Semantic Error is Caught<a class="headerlink" href="#brief-explanation-of-how-each-semantic-error-is-caught" title="Permanent link">&para;</a></h1>
 <h2 id="index-out-of-bound">Index Out of Bound<a class="headerlink" href="#index-out-of-bound" title="Permanent link">&para;</a></h2>
 <p>The array size is stored as a field in the symbol table, so the check is quite straight forward. If the index is a variable, the value of the variable is also checked to scan for out of bounds error.</p>
