@@ -1291,29 +1291,29 @@
 
   <h1>Language Architecture</h1>
 
-<p>graph TD
-    A[BigC Source File<br><code>source.via</code>] --&gt; B[Lexical Analyzer]
+<pre class="mermaid"><code>graph TD
+    A[BigC Source File&lt;br&gt;&lt;code&gt;source.via&lt;/code&gt;] --&gt; B[Lexical Analyzer]
     B --&gt;|Token stream| C[Syntax Analyzer]
     C --&gt;|AST| D[Semantic Analyzer]
     C --&gt; E[Error Handler]
     D --&gt;|Symbol Table| F[Code Generator]
-    F --&gt;|Assembly<br><code>dest.asm</code>| G["RARS"<br>RISC-V Assembler &amp; Simulator]</p>
-<div class="highlight"><pre><span></span><code>subgraph Input Constructs
-    H[Built-in&lt;br&gt;Functions]
-    I[Branch]
-    J[Loop]
-    K[Expr]
-    L[Assign]
-    M[Block]
-end
+    F --&gt;|Assembly&lt;br&gt;&lt;code&gt;dest.asm&lt;/code&gt;| G["RARS"&lt;br&gt;RISC-V Assembler &amp; Simulator]
 
-H --&gt; F
-I --&gt; F
-J --&gt; F
-K --&gt; F
-L --&gt; F
-M --&gt; F
-</code></pre></div>
+    subgraph Input Constructs
+        H[Built-in&lt;br&gt;Functions]
+        I[Branch]
+        J[Loop]
+        K[Expr]
+        L[Assign]
+        M[Block]
+    end
+
+    H --&gt; F
+    I --&gt; F
+    J --&gt; F
+    K --&gt; F
+    L --&gt; F
+    M --&gt; F</code></pre>
 
 
 
