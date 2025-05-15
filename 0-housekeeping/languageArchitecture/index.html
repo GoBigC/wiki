@@ -1293,14 +1293,12 @@
 
 <pre class="mermaid"><code>flowchart TD
 
-%% Color classes with green shades
-classDef input fill:#e6f4ea,stroke:#34d399,stroke-width:1px;         %% Light green (input)
-classDef subinput fill:#d1fae5,stroke:#10b981,stroke-width:1px;      %% Mint green (input constructs)
-classDef process fill:#bbf7d0,stroke:#22c55e,stroke-width:1px;       %% Base green (pipeline blocks)
-classDef output fill:#ccfbf1,stroke:#2dd4bf,stroke-width:1px;        %% Teal green (output)
+classDef input fill:#e6f4ea,stroke:#34d399,stroke-width:1px;         
+classDef subinput fill:#d1fae5,stroke:#10b981,stroke-width:1px;      
+classDef process fill:#bbf7d0,stroke:#22c55e,stroke-width:1px;       
+classDef output fill:#ccfbf1,stroke:#2dd4bf,stroke-width:1px;        
 classDef error fill:#fee2e2,stroke:#ef4444,stroke-width:1px;
 
-%% Input Constructs subgraph (green variant)
 subgraph Input_Constructs[" "]
     direction TB
     H["🧩 Built-in&lt;br&gt;Functions"]:::subinput
@@ -1311,7 +1309,6 @@ subgraph Input_Constructs[" "]
     M["📦 Block"]:::subinput
 end
 
-%% Link input constructs to code generator
 H --- F
 I --- F
 J --- F
@@ -1319,7 +1316,6 @@ K --- F
 L --- F
 M --- F
 
-%% Main pipeline
 A["BigC Source File&lt;br&gt;&lt;code&gt;📄 source.uia&lt;/code&gt;"]:::input --&gt; B["🔍 Lexical Analyzer&lt;br&gt;&lt;sub&gt;by ANTLR&lt;/sub&gt;"]:::process
 B -- Token stream --&gt; C["📐 Syntax Analyzer&lt;br&gt;&lt;sub&gt;by ANTLR&lt;/sub&gt;"]:::process
 C -- AST --&gt; D["🧠 Semantic Analyzer"]:::process
