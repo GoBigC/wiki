@@ -1291,29 +1291,37 @@
 
   <h1>Language Architecture</h1>
 
-<pre class="mermaid"><code>graph TD
-    A[BigC Source File&lt;br&gt;&lt;code&gt;source.via&lt;/code&gt;] --&gt; B[Lexical Analyzer]
-    B --&gt;|Token stream| C[Syntax Analyzer]
-    C --&gt;|AST| D[Semantic Analyzer]
-    C --&gt; E[Error Handler]
-    D --&gt;|Symbol Table| F[Code Generator]
-    F --&gt;|Assembly&lt;br&gt;&lt;code&gt;dest.asm&lt;/code&gt;| G["RARS"&lt;br&gt;RISC-V Assembler &amp; Simulator]
-
-    subgraph Input Constructs
-        H[Built-in&lt;br&gt;Functions]
-        I[Branch]
-        J[Loop]
-        K[Expr]
-        L[Assign]
-        M[Block]
-    end
-
-    H --&gt; F
-    I --&gt; F
-    J --&gt; F
-    K --&gt; F
-    L --&gt; F
-    M --&gt; F</code></pre>
+<p>%% Define flow direction
+flowchart TD</p>
+<p>%% Define classes
+classDef input fill:#fef3c7,stroke:#f59e0b,stroke-width:1px;
+classDef process fill:#dbf4ff,stroke:#38bdf8,stroke-width:1px;
+classDef output fill:#d1fae5,stroke:#10b981,stroke-width:1px;
+classDef error fill:#fee2e2,stroke:#ef4444,stroke-width:1px;</p>
+<p>%% Input constructs (left side)
+subgraph Input_Constructs[" "]
+    direction TB
+    H["🧩 Built-in<br>Functions"]:::input
+    I["🔀 Branch"]:::input
+    J["🔁 Loop"]:::input
+    K["🧮 Expr"]:::input
+    L["📝 Assign"]:::input
+    M["📦 Block"]:::input
+end</p>
+<p>%% Connect inputs to Code Generator
+H --- F
+I --- F
+J --- F
+K --- F
+L --- F
+M --- F</p>
+<p>%% Main pipeline
+A["BigC Source File<br><code>📄 source.uia</code>"]:::input --&gt; B["🔍 Lexical Analyzer<br><sub>by ANTLR</sub>"]:::process
+B -- Token stream --&gt; C["📐 Syntax Analyzer<br><sub>by ANTLR</sub>"]:::process
+C -- AST --&gt; D["🧠 Semantic Analyzer"]:::processby
+C --&gt; E["❗ Error Handler"]:::error
+D -- Symbol Table --&gt; F["🛠️ Code Generator"]:::process
+F -- "Assembly<br><code>📄 dest.asm</code>" --&gt; G["⚙️ RARS<br>RISC-V Assembler &amp; Simulator"]:::output</p>
 
 
 
