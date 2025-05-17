@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://gobigc.github.io/wiki/2-syntaxAnalyzer/interface/">
+        <link rel="canonical" href="https://gobigc.github.io/wiki/0-housekeeping/userManual/">
       
       
-        <link rel="prev" href="../../1-grammar/sample/">
+        <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../sampleAST/">
+        <link rel="next" href="../designChoices/">
       
       
       <link rel="icon" href="../../assets/favicon.ico">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Interface - BigC</title>
+        <title>User Manual - BigC</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#syntax-analyzer-interface" class="md-skip">
+        <a href="#user-manual" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Interface
+              User Manual
             
           </span>
         </div>
@@ -325,10 +325,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../0-housekeeping/userManual/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -337,6 +346,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -392,7 +402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0-housekeeping/designChoices/" class="md-nav__link">
+      <a href="../designChoices/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -413,7 +423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0-housekeeping/techStack/" class="md-nav__link">
+      <a href="../techStack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -434,7 +444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0-housekeeping/vscodeLanguageSupport/" class="md-nav__link">
+      <a href="../vscodeLanguageSupport/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -455,7 +465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0-housekeeping/compilerPipeline/" class="md-nav__link">
+      <a href="../compilerPipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -595,8 +605,6 @@
                 
   
   
-    
-  
   
   
     
@@ -611,11 +619,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
         
           
           <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="">
@@ -629,7 +637,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_5">
             <span class="md-nav__icon md-icon"></span>
             Syntax Analyzer
@@ -640,19 +648,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../2-syntaxAnalyzer/interface/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -661,7 +660,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -674,7 +672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sampleAST/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/sampleAST/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -695,7 +693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../syntaxAnalyzerWritingNotes/" class="md-nav__link">
+      <a href="../../2-syntaxAnalyzer/syntaxAnalyzerWritingNotes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1216,12 +1214,36 @@
                   
 
 
-<h1 id="syntax-analyzer-interface">Syntax Analyzer Interface<a class="headerlink" href="#syntax-analyzer-interface" title="Permanent link">&para;</a></h1>
+<h1 id="user-manual">User manual<a class="headerlink" href="#user-manual" title="Permanent link">&para;</a></h1>
 <ul>
-<li>Input: BigC source code </li>
-<li>Output: Abstract Syntax Tree </li>
+<li>Source code file extension: .uia </li>
+<li>Most syntax are like C -- read the grammar</li>
+<li>Static type</li>
+<li>Static scope</li>
+<li>Variable redeclaration not allowed </li>
+<li>Supports array of primitive types, elements in array must be assigned one by one </li>
+<li>All code must be in <code>main()</code></li>
+<li>Can't define custom function </li>
+<li>Has built-in functions for I/O: <code>_printInt()</code>, <code>_printBool()</code>, <code>_printChar()</code>, <code>_printFloat()</code></li>
+<li>Primitive types: <code>int</code>, <code>bool</code>, <code>char</code>, <code>float</code> </li>
+<li>Branch: <code>if-else</code> only</li>
+<li>Loop: <code>while</code> only</li>
+<li>
+<p>Generally, no shorthand notation for anything (no <code>i++</code>, no <code>i+=1</code>, must be <code>i=i+1</code>, can't init array in {}, etc.)</p>
+</li>
+<li>
+<p>Array accessing</p>
+</li>
 </ul>
-<p>Source code repo: <a href="https://github.com/GoBigC/BigC/tree/main/pkg/syntax">https://github.com/GoBigC/BigC/tree/main/pkg/syntax</a> </p>
+<p>This is not supported:</p>
+<div class="highlight"><pre><span></span><code>// assuming arr is an array
+arr[1+1];
+</code></pre></div>
+<p>You need to declare a separate variable to compute the index first:</p>
+<div class="highlight"><pre><span></span><code>// assuming arr is an array
+int k = 1+1;
+arr[k];
+</code></pre></div>
 
 
 

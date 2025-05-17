@@ -36,11 +36,12 @@ markdown_extensions:
 nav:
   - About BigC:
       - index.md
+      - User Manual: 0-housekeeping/userManual.md
       - Home:
           - Design Choices: 0-housekeeping/designChoices.md
           - Tech Stack: 0-housekeeping/techStack.md
           - Language Support: 0-housekeeping/vscodeLanguageSupport.md
-          - Language quirks: 0-housekeeping/quirks.md
+          - Compiler Pipeline: 0-housekeeping/compilerPipeline.md
       - Grammar:
           - Bible: 1-grammar/bible.md
           - Proof: 1-grammar/proof.md
